@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Parcours</title>
+    <meta name="description" content="Formation et compétences techniques de mon portfolio professionnel.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-new': '#10B981', 
+                        'secondary-new': '#065F46', 
+                        'accent-new': '#34D399', 
+                        'bg-light': '#1A1A1A', 
+                        'text-dark': '#F9FAFB', 
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-up': 'scaleUp 0.8s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(50px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        scaleUp: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #1A1A1A 0%, #065F46 100%); }
+        .card-hover { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3); }
+        .text-gradient { background: linear-gradient(45deg, #34D399 0%, #10B981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .border-primary-new { border-color: #10B981; }
+        .border-secondary-new { border-color: #065F46; }
+        .border-accent-new { border-color: #34D399; }
+        .active-link { color: #10B981; font-weight: 700; }
+        /* Fond de carte sombre et bordure claire */
+        .card-dark { background-color: #2C2C2C; border: 1px solid #3A3A3A; }
+    </style>
+</head>
+<body class="min-h-screen font-sans text-text-dark" style="background-color: #1A1A1A; background-image: url(...);">
+
+    <nav class="fixed w-full bg-[#0F0F0F]/95 backdrop-blur-md z-50 shadow-lg border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-extrabold text-gradient animate-fade-in">Mon Portfolio</a>
+                <div class="hidden md:flex space-x-10 font-medium">
+                    <a href="index.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Accueil</a>
+                    <a href="parcours.html" class="active-link relative group"> Parcours
+                        <span class="absolute left-0 bottom-0 h-0.5 w-full bg-primary-new transition-all duration-300"></span>
+                    </a>
+                    <a href="projets.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Projets</a>
+                    <a href="experiences.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Expériences</a>
+                    <a href="contact.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Contact</a>
+                </div>
+                <div class="md:hidden"><button class="text-gray-400 hover:text-primary-new"><i class="fas fa-bars text-xl"></i></button></div>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="parcours" class="py-24">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl font-extrabold text-center mb-16 text-text-dark pt-10 animate-slide-up">
+                <span class="text-gradient">Mon Parcours</span>
+            </h1>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="animate-slide-up">
+                    <h2 class="text-3xl font-bold mb-10 text-primary-new flex items-center border-b border-gray-800 pb-3">
+                        <i class="fas fa-graduation-cap text-accent-new mr-4 text-3xl"></i>
+                        Formation
+                    </h2>
+                    <div class="space-y-8">
+                        
+                        <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-primary-new transform hover:shadow-2xl">
+                            <h4 class="text-2xl font-bold text-text-dark flex items-center">
+                                BTS Services Informatiques aux Organisations
+                                <span class="ml-3 px-3 py-1 text-sm font-semibold rounded-full bg-primary-new/20 text-primary-new">SISR</span>
+                            </h4>
+                            <p class="text-accent-new font-semibold mb-3">Lycée Chevrollier, Angers • 2024-2026</p>
+                            <p class="text-gray-400">Option Solutions d'Infrastructure, Systèmes et Réseaux. Axé sur l'administration, la maintenance et la sécurisation des infrastructures.</p>
+                        </div>
+                        
+                        <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-secondary-new transform hover:shadow-2xl">
+                            <h4 class="text-2xl font-bold text-text-dark flex items-center">
+                                Baccalauréat professionnel Système Numérique (RISC)
+                                <span class="text-sm font-extrabold text-yellow-500 bg-yellow-500/20 px-3 py-1 rounded-full ml-auto self-start text-center">Mention Très Bien</span>
+                            </h4>
+                            <p class="text-accent-new font-semibold mb-3">Lycée Touchard Washington, Le Mans • 2021-2024</p>
+                            <p class="text-gray-400">Option Réseaux Informatiques et Systèmes Communicants. Diplômé avec distinction pour l'excellence des résultats.</p>
+                        </div>
+
+                        <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-accent-new transform hover:shadow-2xl">
+                            <h4 class="text-2xl font-bold text-text-dark flex items-center">
+                                CACES R485 - Catégorie 1 et 2
+                                <i class="fas fa-check-circle text-accent-new ml-3 text-2xl"></i>
+                            </h4>
+                            <p class="text-accent-new font-semibold mb-3">Certigo-Icofor Le Mans • Obtenu le 16/07/2024</p>
+                            <p class="text-gray-400">Certification d'aptitude à la conduite en sécurité pour les Chariots de manutention automoteurs gerbeurs à conducteur accompagnant.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="animate-slide-up delay-100">
+                    <h2 class="text-3xl font-bold mb-10 text-primary-new flex items-center border-b border-gray-800 pb-3">
+                        <i class="fas fa-code text-accent-new mr-4 text-3xl"></i>
+                        Compétences Techniques
+                    </h2>
+                    <div class="space-y-8">
+                        <h3 class="text-xl font-bold text-primary-new border-b border-gray-700 pb-2 flex items-center">
+                            <i class="fas fa-server mr-2 text-accent-new"></i> BLOC 2 : Administration des systèmes et réseaux
+                        </h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
+                                <i class="fas fa-network-wired text-cyan-400 text-4xl mb-3"></i>
+                                <p class="font-bold text-text-dark text-sm">Conception d'Infrastructure Réseau</p>
+                            </div>
+                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
+                                <i class="fas fa-cogs text-yellow-300 text-4xl mb-3"></i>
+                                <p class="font-bold text-text-dark text-sm">Installation & Déploiement Réseau</p>
+                            </div>
+                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
+                                <i class="fas fa-tools text-orange-400 text-4xl mb-3"></i>
+                                <p class="font-bold text-text-dark text-sm">Exploitation, Dépannage & Supervision</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-primary-new border-b border-gray-700 pb-2 pt-6 flex items-center">
+                            <i class="fas fa-shield-alt mr-2 text-accent-new"></i> BLOC 3 : Cybersécurité
+                        </h3>
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
+                                <i class="fas fa-lock text-red-500 text-4xl mb-3"></i>
+                                <p class="font-bold text-text-dark text-sm">Protection des Données Personnelles</p>
+                            </div>
+                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
+                                <i class="fas fa-user-shield text-green-400 text-4xl mb-3"></i>
+                                <p class="font-bold text-text-dark text-sm">Préservation de l'Identité Numérique</p>
+                            </div>
+                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
+                                <i class="fas fa-laptop-code text-blue-400 text-4xl mb-3"></i>
+                                <p class="font-bold text-text-dark text-sm">Sécurisation des Équipements & Usages</p>
+                            </div>
+                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new col-span-2">
+                                <i class="fas fa-chart-line text-purple-400 text-4xl mb-3"></i>
+                                <p class="font-bold text-text-dark text-sm">Garantie de Disponibilité, Intégrité, Confidentialité (DIC)</p>
+                            </div>
+                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
+                                <i class="fas fa-file-code text-pink-400 text-4xl mb-3"></i>
+                                <p class="font-bold text-text-dark text-sm">Sécurité de Solution Applicative & Développement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0F0F0F] text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 pb-8 mb-8">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-3xl font-extrabold text-gradient">Mon Portfolio</a>
+                    <p class="text-gray-400 mt-2 font-light"></p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110"><i class="fab fa-linkedin text-3xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110"><i class="fab fa-github text-3xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110"><i class="fab fa-twitter text-3xl"></i></a>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Mon Portfolio. Tous droits réservés | Design par Julian Lory</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -80px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.animate-slide-up, .animate-scale-up, .animate-fade-in').forEach(el => {
+            el.classList.add('transition-transform', 'duration-800', 'ease-out');
+            observer.observe(el);
+        });
+        document.querySelectorAll('.animate-slide-up').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(50px)'; });
+        document.querySelectorAll('.animate-scale-up').forEach(el => { el.style.opacity = '0'; el.style.transform = 'scale(0.8)'; });
+        document.querySelectorAll('.animate-fade-in').forEach(el => { el.style.opacity = '0'; });
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText = `.is-visible { opacity: 1 !important; transform: translateY(0) scale(1) !important; }.delay-100 { transition-delay: 0.1s; }.delay-200 { transition-delay: 0.2s; }.delay-300 { transition-delay: 0.3s; }.duration-800 { transition-duration: 0.8s; }`;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Projet - Grégoire Construction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .text-gradient { background: linear-gradient(45deg, #34D399 0%, #10B981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bg-dark-section { background-color: #2C2C2C; }
+    </style>
+</head>
+<body class="min-h-screen font-sans text-gray-100" style="background-color: #1A1A1A;">
+    <nav class="fixed w-full bg-[#0F0F0F]/95 backdrop-blur-md z-50 shadow-lg border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-extrabold text-gradient">Mon Portfolio</a>
+                <div class="hidden md:flex space-x-10 font-medium">
+                    <a href="index.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Accueil</a>
+                    <a href="parcours.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Parcours</a>
+                    <a href="projets.html" class="text-primary-new relative group">Projets</a>
+                    <a href="experiences.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Expériences</a>
+                    <a href="contact.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Contact</a>
+                </div>
+                <div class="md:hidden"><button class="text-gray-400 hover:text-primary-new"><i class="fas fa-bars text-xl"></i></button></div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="detail-projet" class="py-24">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h1 class="text-5xl font-extrabold text-center mb-6 text-text-dark pt-10">
+                <span class="text-gradient">Transformation numérique de Grégoire Construction</span>
+            </h1>
+            <p class="text-xl text-center text-gray-400 mb-12">
+                Mise en place d'une infrastructure IT complète, sécurisée et centralisée pour l'entreprise Grégoire Construction.
+            </p>
+
+            <div class="space-y-12">
+                
+                <div class="bg-dark-section p-8 rounded-xl shadow-2xl border-l-4 border-indigo-500">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-400 flex items-center"><i class="fas fa-network-wired mr-3"></i> Infrastructure Active Directory</h2>
+                    <p class="mb-4">
+                        L'Active Directory (AD) a été mis en place pour centraliser les utilisateurs et sécuriser l’accès aux ressources du réseau. Le domaine actif est <code>gregoireconstruction.fr</code>.
+                    </p>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                        <li>Création structurée des utilisateurs et groupes par services.</li>
+                        <li>Comptes personnalisés avec des privilèges spécifiques.</li>
+                        <li>Organisation hiérarchique des données avec des répertoires personnels et de groupes structurés.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-dark-section p-8 rounded-xl shadow-2xl border-l-4 border-yellow-500">
+                    <h2 class="text-3xl font-bold mb-4 text-yellow-400 flex items-center"><i class="fas fa-cogs mr-3"></i> Services Réseau Fondamentaux & GPO</h2>
+                    <p class="mb-4">
+                        Les services essentiels DNS et DHCP ont été configurés pour assurer la connectivité, complétés par une stratégie de sécurité et d'administration centralisée via les GPO (Group Policy Objects).
+                    </p>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Services Réseau :</h3>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                        <li>Service DNS : DNS 1 : 192.168.37.201, DNS 2 : 192.168.10.1</li>
+                        <li>Service DHCP : Plage d'attribution de 192.168.37.205 à 192.168.37.250</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Configuration des GPO :</h3>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                        <li>Sécurité renforcée : Blocage des ports USB (selon services) et restrictions va le Panneau de configuration</li>
+                        <li>Mappage automatique des lecteurs réseau personnels et de services</li>
+                        <li>Déploiement logiciel automatisé (Chrome et agent GLPI)</li>
+                        <li>Personnalisation : Fond d'écran uniforme pour l'identité visuelle</li>
+                    </ul>
+                </div>
+
+                <div class="bg-dark-section p-8 rounded-xl shadow-2xl border-l-4 border-green-500">
+                    <h2 class="text-3xl font-bold mb-4 text-green-400 flex items-center"><i class="fas fa-server mr-3"></i> Serveur Web (Debian 12) & Solution GLPI</h2>
+                    <p class="mb-4">
+                        Un serveur Debian 12 a été configuré pour héberger l'image publique de l'entreprise et centraliser la gestion du parc informatique
+                    </p>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Serveur Web :</h3>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                        <li>Installation d'Apache 2 avec configuration de virtuals hosts</li>
+                        <li>Configuration du nom de domaine <code>www.gregoireconstruction.fr</code> avec certificats de sécurité (via hôte DNS)</li>
+                        <li>Déploiement d'un site vitrine</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Solution GLPI :</h3>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                        <li>Gestion centralisée des incidents et inventaire automatisé des équipements (via Agent GLPI)</li>
+                        <li>Authentification simplifiée via les identifiants Active Directory</li>
+                        <li>Tableau de bord pour la visualisation de l'état du parc</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-dark-section p-8 rounded-xl shadow-2xl border-l-4 border-red-500">
+                    <h2 class="text-3xl font-bold mb-4 text-red-400 flex items-center"><i class="fas fa-database mr-3"></i> Base de Données & Stratégie de Sauvegarde</h2>
+                    <p class="mb-4">
+                        La pérennité et la sécurité des données critiques sont assurées par un serveur de Base de Données isolé et une stratégie de sauvegarde robuste
+                    </p>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Serveur de Base de Données (Debian 12) :</h3>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                        <li>Moteur MariaDB, performant et sécurisé</li>
+                        <li>Centralisation de toutes les données applicatives pour un point de gestion unique</li>
+                        <li>Isolement pour renforcer la sécurité contre les menaces (ex: ransomwares)</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Stratégie de Sauvegarde :</h3>
+                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
+                        <li>Scripts Bash automatisés pour la sauvegarde des serveurs web et base de données</li>
+                        <li>Transfert sécurisé vers un NAS (OpenMediaVault) via SCP avec clés RSA</li>
+                        <li>Le script automatise le dump de la base de données GLPI, la récupération des fichiers via SCP, la compression en `.tar.gz` et le transfert vers le NAS distant</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 border-2 border-primary-new rounded-xl text-center">
+                    <h2 class="text-2xl font-bold mb-2 text-primary-new">Conclusion</h2>
+                    <p class="text-gray-300">
+                        Cette nouvelle infrastructure IT offre à Grégoire Construction une solution complète et sécurisée, garantissant une sécurité renforcée contre les ransomwares, une efficacité opérationnelle grâce à GLPI et l'AD, ainsi que la pérennité des données grâce à une stratégie de sauvegarde robuste
+                    </p>
+                </div>
+
+                <div class="text-center pt-8">
+                    <a href="projets.html" class="bg-primary-new text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-accent-new transition-all duration-300">
+                        <i class="fas fa-arrow-left mr-2"></i> Retour aux Projets
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="bg-[#0F0F0F] text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 pb-8 mb-8">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-3xl font-extrabold text-gradient">Mon Portfolio</a>
+                    <p class="text-gray-400 mt-2 font-light"></p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+                        <i class="fab fa-linkedin text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+                        <i class="fab fa-github text-3xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+                        <i class="fab fa-twitter text-3xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Mon Portfolio. Tous droits réservés | Design par Julian Lory</p>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+</html>
