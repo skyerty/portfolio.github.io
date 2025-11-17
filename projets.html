@@ -5,259 +5,409 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio - Projets</title>
-    <meta name="description" content="Découvrez les projets clés de mon portfolio professionnel.">
-    
-    <!-- Google Fonts: Inter + Space Grotesk pour un look ultra-moderne -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CDN + Custom Config -->
+    <meta name="description" content="Découvrez mes projets en systèmes et réseaux, cybersécurité et développement.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#10B981',      // Emerald 500
-                        'primary-dark': '#059669', // Emerald 600
-                        'secondary': '#065F46',    // Emerald 900
-                        'accent': '#34D399',       // Emerald 400
-                        'bg-dark': '#0A0A0A',
-                        'surface': '#111111',
-                        'text-primary': '#F9FAFB',
-                        'text-secondary': '#9CA3AF',
-                        'border': '#1F2937',
+                        'primary-new': '#10B981', 
+                        'secondary-new': '#065F46', 
+                        'accent-new': '#34D399', 
+                        'bg-light': '#1A1A1A', 
+                        'text-dark': '#F9FAFB', 
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['"Space Grotesk"', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(circle at top left, #10B98120, transparent 60%)',
-                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, #10B98110, #065F46, #10B98110)',
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'slideInUp': 'slideInUp 0.8s ease-out forwards',
-                        'fadeIn': 'fadeIn 1s ease-out forwards',
-                        'scaleIn': 'scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-up': 'scaleUp 0.8s ease-out',
+                        'float': 'float 4s ease-in-out infinite'
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-12px)' }
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)' },
-                            '100%': { boxShadow: '0 0 40px rgba(16, 185, 129, 0.5)' }
-                        },
-                        slideInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(60px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
-                        },
-                        scaleIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' }
-                        }
-                    },
-                    backdropBlur: {
-                        xs: '2px',
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(50px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        scaleUp: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } },
+                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } }
                     }
                 }
             }
         }
     </script>
-
     <style>
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0A0A0A; }
-        ::-webkit-scrollbar-thumb { background: #10B981; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #059669; }
-
-        .glass {
-            background: rgba(17, 17, 17, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glass-card {
-            background: rgba(26, 26, 26, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(52, 211, 153, 0.2);
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        .glass-card:hover {
-            border-color: #34D399;
-            box-shadow: 0 25px 50px rgba(16, 185, 129, 0.25);
-            transform: translateY(-16px) scale(1.02);
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #34D399, #10B981, #059669);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .btn-glow {
+        .gradient-bg { background: linear-gradient(135deg, #1A1A1A 0%, #065F46 100%); }
+        .card-hover { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3); }
+        .text-gradient { background: linear-gradient(45deg, #34D399 0%, #10B981 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .border-primary-new { border-color: #10B981; }
+        .border-secondary-new { border-color: #065F46; }
+        .border-accent-new { border-color: #34D399; }
+        .active-link { color: #10B981; font-weight: 700; }
+        body {
+            background: #0a0a0a;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(6, 95, 70, 0.12) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        section, nav, footer {
+            position: relative;
             z-index: 1;
         }
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.7s;
+        
+        /* Mode sombre/clair */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #0F0F0F;
+            --bg-card: rgba(20, 20, 20, 0.8);
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --border-color: rgba(255,255,255,0.08);
         }
-        .btn-glow:hover::before {
-            left: 100%;
+        
+        body.light-mode {
+            --bg-primary: #F9FAFB;
+            --bg-secondary: #FFFFFF;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --border-color: rgba(0,0,0,0.1);
         }
-        .noise {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.03 0"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.15"/></svg>') repeat;
-            z-index: 0;
-            opacity: 0.03;
+        
+        body.light-mode::before {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(6, 95, 70, 0.06) 0%, transparent 50%),
+                linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 50%, #F3F4F6 100%) !important;
+        }
+        
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-bottom-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode #mobile-menu {
+            background: rgba(255, 255, 255, 0.98) !important;
+            border-top-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode footer {
+            background: #F3F4F6 !important;
+            color: #111827 !important;
+        }
+        
+        body.light-mode footer .border-gray-700 {
+            border-color: #D1D5DB !important;
+        }
+        
+        body.light-mode .text-gray-300,
+        body.light-mode .text-gray-400 {
+            color: var(--text-primary) !important;
+        }
+        
+        body.light-mode .text-white {
+            color: var(--text-primary) !important;
+        }
+        
+        body.light-mode .gradient-bg {
+            background: linear-gradient(135deg, #F9FAFB 0%, #E5F5F0 100%) !important;
+        }
+        
+        body.light-mode section.bg-bg-light {
+            background: #FFFFFF !important;
+        }
+        
+        body.light-mode [class*="from-[#0F0F0F]"] {
+            background: linear-gradient(to bottom right, #FFFFFF, #F3F4F6) !important;
+        }
+        
+        body.light-mode [class*="bg-[#0F0F0F]"] {
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        body.light-mode [class*="bg-[#1a1a1a]"] {
+            background: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        body.light-mode [class*="border-primary-new"] {
+            border-color: rgba(16, 185, 129, 0.3) !important;
+        }
+        
+        body.light-mode [class*="border-secondary-new"] {
+            border-color: rgba(6, 95, 70, 0.3) !important;
+        }
+        
+        body.light-mode [class*="bg-primary-new/20"],
+        body.light-mode [class*="bg-secondary-new/20"] {
+            background: rgba(16, 185, 129, 0.1) !important;
+        }
+        
+        body.light-mode [class*="from-[#0F0F0F]"][class*="bg-gradient-to-t"] {
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent) !important;
+        }
+        
+        body.light-mode .card-hover:hover {
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode .border-t.border-primary-new\/20 {
+            border-top-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode .border-b.border-primary-new\/20 {
+            border-bottom-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode .shadow-2xl {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        body.light-mode .shadow-xl {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important;
         }
     </style>
+    <script>
+        // Charger le thème IMMÉDIATEMENT avant le rendu pour éviter le flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+                document.body.classList.add('light-mode');
+            }
+        })();
+    </script>
 </head>
-<body class="bg-bg-dark text-text-primary min-h-screen overflow-x-hidden relative">
-
-    <!-- Subtle Noise Overlay -->
-    <div class="noise"></div>
-
-    <!-- Floating Background Orbs -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute -top-40 -left-40 w-96 h-96 bg-primary rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
-        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-accent rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary-dark rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse animation-delay-4000"></div>
-    </div>
-    <nav class="fixed w-full bg-[#0F0F0F]/95 backdrop-blur-md z-50 shadow-lg border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4">
+<body class="min-h-screen bg-bg-light font-sans text-text-dark" id="body">
+    <nav class="fixed w-full bg-[#0F0F0F]/90 backdrop-blur-xl z-50 shadow-2xl border-b border-primary-new/20">
+        <div class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="text-3xl font-extrabold text-gradient">Mon Portfolio</a>
-                <div class="hidden md:flex space-x-10 font-medium">
-                    <a href="index.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Accueil</a>
-                    <a href="parcours.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Parcours</a>
-                    <a href="projets.html" class="text-primary-new relative group">Projets</a>
-                    <a href="experiences.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Expériences</a>
-                    <a href="contact.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Contact</a>
+                <a href="index.html" class="text-2xl font-extrabold text-gradient animate-fade-in hover:scale-105 transition-transform duration-300 flex items-center space-x-2">
+                    <div class="w-1.5 h-1.5 bg-accent-new rounded-full animate-pulse"></div>
+                    <span>Mon Portfolio</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-3">
+                    <div class="flex items-center space-x-1 bg-[#1a1a1a]/50 rounded-full px-1.5 py-1 border border-primary-new/20">
+                        <a href="index.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Accueil</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="parcours.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">À propos de moi</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="projets.html" class="active-link text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-semibold">
+                            <span class="relative z-10">Projets</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/20 to-accent-new/20 rounded-full opacity-100"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-10 bg-gradient-to-r from-primary-new to-accent-new rounded-full"></span>
+                        </a>
+                        <a href="experiences.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Expériences</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="explorationtech.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Veille Tech</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="contact.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Contact</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                    </div>
+                    <button id="theme-toggle" class="p-2 rounded-full bg-[#1a1a1a]/50 border border-primary-new/20 hover:bg-primary-new/10 transition-all duration-300 text-gray-300 hover:text-accent-new">
+                        <i class="fas fa-moon text-lg" id="theme-icon"></i>
+                    </button>
                 </div>
-                <div class="md:hidden"><button class="text-gray-400 hover:text-primary-new"><i class="fas fa-bars text-xl"></i></button></div>
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg hover:bg-primary-new/10 transition-colors duration-300 text-gray-300 hover:text-accent-new">
+                        <i class="fas fa-moon text-xl" id="theme-icon-mobile"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-accent-new transition-colors duration-300 p-2 rounded-lg hover:bg-primary-new/10">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0F0F0F]/98 backdrop-blur-xl border-t border-primary-new/20">
+            <div class="container mx-auto px-6 py-4 space-y-2">
+                <a href="index.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-home mr-3 text-accent-new text-base"></i>Accueil
+                </a>
+                <a href="parcours.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-graduation-cap mr-3 text-accent-new text-base"></i>Parcours
+                </a>
+                <a href="projets.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-briefcase mr-3 text-accent-new text-base"></i>Projets
+                </a>
+                <a href="experiences.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-chart-line mr-3 text-accent-new text-base"></i>Expériences
+                </a>
+                <a href="explorationtech.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-search mr-3 text-accent-new text-base"></i>Veille Tech
+                </a>
+                <a href="contact.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-envelope mr-3 text-accent-new text-base"></i>Contact
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 relative z-10">
+    <section class="pt-32 pb-16 gradient-bg">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-6xl md:text-7xl font-extrabold font-display mb-6 leading-tight opacity-0 animate-slideInUp" style="animation-delay: 0.2s;">
-                <span class="text-gradient">Projets </span>
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 animate-slide-up">
+                <span class="text-gradient">Mes Projets</span>
             </h1>
-            <p class="text-xl text-text-secondary max-w-3xl mx-auto opacity-0 animate-fadeIn" style="animation-delay: 0.5s;">
-                Des solutions techniques robustes, sécurisées et innovantes pour transformer les défis en opportunités.
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto animate-slide-up delay-100">
+                Découvrez mes réalisations en systèmes et réseaux, cybersécurité et développement
             </p>
         </div>
     </section>
 
-    <!-- Projects Grid -->
-    <section class="py-16 relative z-10">
+    <!-- Projects Section -->
+    <section class="py-20 bg-bg-light">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-10 max-w-7xl mx-auto">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Projet GSB -->
+                    <div class="animate-scale-up">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-primary-new/20 rounded-3xl blur-2xl opacity-50"></div>
+                            <div class="relative bg-gradient-to-br from-[#0F0F0F] to-[#1a1a1a] rounded-3xl overflow-hidden border-2 border-primary-new/40 card-hover shadow-2xl">
+                                <div class="relative h-64 overflow-hidden">
+                                    <img 
+                                        src="./image/logoGSB.jpg" 
+                                        alt="Projet GSB Appli-Frais" 
+                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                        loading="lazy"
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F0F] via-transparent to-transparent"></div>
+                                    <div class="absolute top-4 right-4">
+                                        <span class="px-4 py-2 bg-primary-new/20 backdrop-blur-sm text-accent-new rounded-full text-sm font-semibold border border-primary-new/40">
+                                            <i class="fas fa-shield-alt mr-2"></i>Sécurité
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="p-8">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-primary-new/30 to-accent-new/30 rounded-xl flex items-center justify-center mr-4 border border-primary-new/50">
+                                            <i class="fas fa-network-wired text-accent-new text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-2xl font-bold text-accent-new">GSB Appli-Frais</h3>
+                                            <div class="h-1 w-16 bg-gradient-to-r from-primary-new to-accent-new rounded-full mt-1"></div>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-300 mb-6 leading-relaxed">
+                                        Architecture réseau sécurisée avec DMZ, filtrage avancé, chiffrement des données et supervision pour l'application de gestion des frais médicaux.
+                                    </p>
+                                    <div class="flex flex-wrap gap-3 mb-6">
+                                        <span class="px-4 py-2 bg-gradient-to-r from-primary-new/20 to-accent-new/20 text-accent-new rounded-full border border-primary-new/40 text-sm font-medium">
+                                            <i class="fas fa-server mr-2"></i>Architecture Réseau
+                                        </span>
+                                        <span class="px-4 py-2 bg-gradient-to-r from-primary-new/20 to-accent-new/20 text-accent-new rounded-full border border-primary-new/40 text-sm font-medium">
+                                            <i class="fas fa-lock mr-2"></i>Cybersécurité
+                                        </span>
+                                        <span class="px-4 py-2 bg-gradient-to-r from-primary-new/20 to-accent-new/20 text-accent-new rounded-full border border-primary-new/40 text-sm font-medium">
+                                            <i class="fas fa-filter mr-2"></i>DMZ & Filtrage
+                                        </span>
+                                        <span class="px-4 py-2 bg-gradient-to-r from-primary-new/20 to-accent-new/20 text-accent-new rounded-full border border-primary-new/40 text-sm font-medium">
+                                            <i class="fas fa-filter mr-2"></i>OpenVPN
+                                        </span>
+                                        <span class="px-4 py-2 bg-gradient-to-r from-primary-new/20 to-accent-new/20 text-accent-new rounded-full border border-primary-new/40 text-sm font-medium">
+                                            <i class="fas fa-filter mr-2"></i>Pfsense
+                                        </span>
+                                    </div>
+                                    <a href="projet-gsb-detail.html" class="inline-flex items-center text-accent-new hover:text-primary-new transition-colors duration-300 font-semibold group">
+                                        Voir les détails <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Projet GSB -->
-                <div class="glass-card rounded-3xl overflow-hidden opacity-0 animate-scaleIn" style="animation-delay: 0.7s;">
-                    <div class="relative group overflow-hidden">
-                        <img 
-                            src="/Users/admin/Documents/PortFoliov2/image/logoGSB.jpg" 
-                            alt="Architecture réseau GSB" 
-                            class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                            loading="lazy"
-                        />
-                        <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                            <span class="text-xs font-medium bg-primary/20 backdrop-blur-sm px-3 py-1 rounded-full">Sécurité avancée</span>
+                    <!-- Projet Grégoire Construction -->
+                    <div class="animate-scale-up delay-100">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-secondary-new/20 rounded-3xl blur-2xl opacity-50"></div>
+                            <div class="relative bg-gradient-to-br from-[#0F0F0F] to-[#1a1a1a] rounded-3xl overflow-hidden border-2 border-secondary-new/40 card-hover shadow-2xl">
+                                <div class="relative h-64 overflow-hidden">
+                                    <img 
+                                        src="./image/Logo grégoire construciton .png" 
+                                        alt="Projet Grégoire Construction" 
+                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                        loading="lazy"
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F0F] via-transparent to-transparent"></div>
+                                    <div class="absolute top-4 right-4">
+                                        <span class="px-4 py-2 bg-secondary-new/20 backdrop-blur-sm text-accent-new rounded-full text-sm font-semibold border border-secondary-new/40">
+                                            <i class="fas fa-building mr-2"></i>Infrastructure
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="p-8">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-secondary-new/30 to-accent-new/30 rounded-xl flex items-center justify-center mr-4 border border-secondary-new/50">
+                                            <i class="fas fa-server text-accent-new text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-2xl font-bold text-accent-new">Grégoire Construction</h3>
+                                            <div class="h-1 w-16 bg-gradient-to-r from-secondary-new to-accent-new rounded-full mt-1"></div>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-300 mb-6 leading-relaxed">
+                                        Déploiement d'une infrastructure complète : Active Directory, GLPI, base MariaDB sécurisée, serveur web Debian et stratégie de sauvegarde NAS.
+                                    </p>
+                                    <div class="flex flex-wrap gap-3 mb-6">
+                                        <span class="px-4 py-2 bg-gradient-to-r from-secondary-new/20 to-accent-new/20 text-accent-new rounded-full border border-secondary-new/40 text-sm font-medium">
+                                            <i class="fas fa-users-cog mr-2"></i>Active Directory
+                                        </span>
+                                        <span class="px-4 py-2 bg-gradient-to-r from-secondary-new/20 to-accent-new/20 text-accent-new rounded-full border border-secondary-new/40 text-sm font-medium">
+                                            <i class="fas fa-tools mr-2"></i>GLPI
+                                        </span>
+                                        <span class="px-4 py-2 bg-gradient-to-r from-secondary-new/20 to-accent-new/20 text-accent-new rounded-full border border-secondary-new/40 text-sm font-medium">
+                                            <i class="fas fa-database mr-2"></i>MariaDB
+                                        </span>
+                                        <span class="px-4 py-2 bg-gradient-to-r from-secondary-new/20 to-accent-new/20 text-accent-new rounded-full border border-secondary-new/40 text-sm font-medium">
+                                            <i class="fas fa-hdd mr-2"></i>Sauvegarde NAS
+                                        </span>
+                                    </div>
+                                    <a href="projet-gregoire-detail.html" class="inline-flex items-center text-accent-new hover:text-primary-new transition-colors duration-300 font-semibold group">
+                                        Voir les détails <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-2"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3 flex items-center gap-3">
-                            <span class="text-primary">GSB Appli-Frais</span> 
-                            <i class="fas fa-shield-alt text-accent text-lg animate-glow"></i>
-                        </h3>
-                        <p class="text-text-secondary mb-6 leading-relaxed">
-                            Architecture réseau sécurisée avec DMZ, filtrage avancé, chiffrement des données et supervision pour l’application de gestion des frais médicaux.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1.5 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20">Architecture Réseau</span>
-                            <span class="px-3 py-1.5 bg-red-500/10 text-red-400 text-xs font-medium rounded-full border border-red-500/20">Cybersécurité DIC</span>
-                            <span class="px-3 py-1.5 bg-yellow-500/10 text-yellow-400 text-xs font-medium rounded-full border border-yellow-500/20">DMZ & Filtrage</span>
-                        </div>
-                        <a href="projet-gsb-detail.html" class="inline-flex items-center text-accent font-semibold hover:text-white transition-all group">
-                            Explorer le projet 
-                            <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-2"></i>
-                        </a>
-                    </div>
+
                 </div>
-
-                <!-- Projet Grégoire Construction -->
-                <div class="glass-card rounded-3xl overflow-hidden opacity-0 animate-scaleIn" style="animation-delay: 0.9s;">
-                    <div class="relative group overflow-hidden">
-                        <img 
-                            src="/Users/admin/Documents/PortFoliov2/image/Logo grégoire construciton .png" 
-                            alt="Transformation numérique Grégoire Construction" 
-                            class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                            loading="lazy"
-                        />
-                        <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                            <span class="text-xs font-medium bg-secondary/20 backdrop-blur-sm px-3 py-1 rounded-full">Infrastructure complète</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3 flex items-center gap-3">
-                            <span class="text-secondary">Grégoire Construction</span> 
-                            <i class="fas fa-building text-accent text-lg animate-float"></i>
-                        </h3>
-                        <p class="text-text-secondary mb-6 leading-relaxed">
-                            Déploiement d’une infrastructure complète : Active Directory, GLPI, base MariaDB sécurisée, serveur web Debian et stratégie de sauvegarde NAS.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1.5 bg-indigo-500/10 text-indigo-400 text-xs font-medium rounded-full border border-indigo-500/20">Active Directory</span>
-                            <span class="px-3 py-1.5 bg-green-500/10 text-green-400 text-xs font-medium rounded-full border border-green-500/20">GLPI</span>
-                            <span class="px-3 py-1.5 bg-yellow-500/10 text-yellow-400 text-xs font-medium rounded-full border border-yellow-500/20">Debian Server</span>
-                            <span class="px-3 py-1.5 bg-red-500/10 text-red-400 text-xs font-medium rounded-full border border-red-500/20">Sauvegarde NAS</span>
-                        </div>
-                        <a href="projet-gregoire-detail.html" class="inline-flex items-center text-accent font-semibold hover:text-white transition-all group">
-                            Découvrir le projet 
-                            <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- CTA Button -->
-            <div class="text-center mt-20 opacity-0 animate-fadeIn" style="animation-delay: 1.2s;">
-                <a href="#" class="btn-glow inline-flex items-center bg-primary text-bg-dark px-10 py-4 rounded-full font-bold text-lg shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 transform hover:scale-105 border-2 border-primary group">
-                    <span>Voir tous les projets techniques</span>
-                    <i class="fas fa-arrow-right ml-3 transition-transform duration-300 group-hover:translate-x-1"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-[#0F0F0F] text-white py-12">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 pb-8 mb-8">
@@ -266,15 +416,13 @@
                     <p class="text-gray-400 mt-2 font-light"></p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+                    <a href="https://www.linkedin.com/in/julian-lory-b0a224392/" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
                         <i class="fab fa-linkedin text-3xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+                    <a href="https://github.com/skyerty/portfolio.github.io" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
                         <i class="fab fa-github text-3xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
-                        <i class="fab fa-twitter text-3xl"></i>
-                    </a>
+                    
                 </div>
             </div>
             <div class="text-center text-gray-500 text-sm">
@@ -283,23 +431,123 @@
         </div>
     </footer>
 
-    <!-- Intersection Observer for Animations -->
     <script>
-        const elements = document.querySelectorAll('.animate-slideInUp, .animate-fadeIn, .animate-scaleIn');
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -80px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.animationPlayState = 'running';
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        elements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.animationPlayState = 'paused';
+        document.querySelectorAll('.animate-slide-up, .animate-scale-up, .animate-fade-in').forEach(el => {
+            el.classList.add('transition-transform', 'duration-800', 'ease-out');
             observer.observe(el);
         });
+
+        document.querySelectorAll('.animate-slide-up').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(50px)'; });
+        document.querySelectorAll('.animate-scale-up').forEach(el => { el.style.opacity = '0'; el.style.transform = 'scale(0.8)'; });
+        document.querySelectorAll('.animate-fade-in').forEach(el => { el.style.opacity = '0'; });
+
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText = `.is-visible { opacity: 1 !important; transform: translateY(0) scale(1) !important; }.delay-100 { transition-delay: 0.1s; }.delay-200 { transition-delay: 0.2s; }.delay-300 { transition-delay: 0.3s; }.duration-800 { transition-duration: 0.8s; }`;
+        document.head.appendChild(styleSheet);
+
+        // Menu mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+        }
+
+        // Theme Toggle - Système global synchronisé
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const body = document.getElementById('body');
+        
+        // Fonction pour appliquer le thème
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                document.documentElement.classList.add('light-mode');
+            } else {
+                body.classList.remove('light-mode');
+                document.documentElement.classList.remove('light-mode');
+            }
+            
+            // Mettre à jour les icônes
+            if (themeIcon) {
+                if (theme === 'light') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+            
+            if (themeIconMobile) {
+                if (theme === 'light') {
+                    themeIconMobile.classList.remove('fa-moon');
+                    themeIconMobile.classList.add('fa-sun');
+                } else {
+                    themeIconMobile.classList.remove('fa-sun');
+                    themeIconMobile.classList.add('fa-moon');
+                }
+            }
+        }
+        
+        // Charger le thème sauvegardé au démarrage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+        // Fonction pour basculer le thème
+        function toggleTheme() {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Sauvegarder la préférence
+            localStorage.setItem('theme', newTheme);
+            
+            // Appliquer le nouveau thème
+            applyTheme(newTheme);
+            
+            // Déclencher un événement storage pour synchroniser les autres onglets
+            window.dispatchEvent(new StorageEvent('storage', {
+                key: 'theme',
+                newValue: newTheme,
+                oldValue: currentTheme
+            }));
+        }
+
+        // Écouter les changements de thème depuis d'autres onglets
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'theme') {
+                applyTheme(e.newValue || 'dark');
+            }
+        });
+
+        // Attacher les événements
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
+        }
     </script>
 </body>
 </html>

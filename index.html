@@ -58,6 +58,94 @@
         .gradient-bg {
             background: linear-gradient(135deg, #1A1A1A 0%, #065F46 100%);
         }
+        /* Arrière-plan stylé avec motifs */
+        body {
+            background: #0a0a0a;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(6, 95, 70, 0.12) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(16, 185, 129, 0.03) 2px, rgba(16, 185, 129, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(52, 211, 153, 0.02) 2px, rgba(52, 211, 153, 0.02) 4px);
+            z-index: 0;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
+        }
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        /* Formes géométriques flottantes */
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.3), transparent);
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.2), transparent);
+            border-radius: 50%;
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+        .shape-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(6, 95, 70, 0.25), transparent);
+            border-radius: 50%;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.9); }
+            75% { transform: translate(20px, 30px) scale(1.05); }
+        }
         /* Effet de survol (ombre verte) */
         .card-hover {
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -71,6 +159,7 @@
         .text-gradient {
             background: linear-gradient(45deg, #34D399 0%, #10B981 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         /* Styles de bordure */
@@ -78,42 +167,256 @@
         .border-secondary-new { border-color: #065F46; }
         .border-accent-new { border-color: #34D399; }
         .active-link { color: #10B981; font-weight: 700; }
+        /* Assurer que le contenu est au-dessus de l'arrière-plan */
+        section, nav, footer {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Mode sombre/clair */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #0F0F0F;
+            --bg-card: rgba(20, 20, 20, 0.8);
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --border-color: rgba(255,255,255,0.08);
+        }
+        
+        body.light-mode {
+            --bg-primary: #F9FAFB;
+            --bg-secondary: #FFFFFF;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --border-color: rgba(0,0,0,0.1);
+        }
+        
+        body.light-mode::before {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(6, 95, 70, 0.06) 0%, transparent 50%),
+                linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 50%, #F3F4F6 100%) !important;
+        }
+        
+        body.light-mode::after {
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(16, 185, 129, 0.015) 2px, rgba(16, 185, 129, 0.015) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(52, 211, 153, 0.01) 2px, rgba(52, 211, 153, 0.01) 4px) !important;
+        }
+        
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-bottom-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode #mobile-menu {
+            background: rgba(255, 255, 255, 0.98) !important;
+            border-top-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode footer {
+            background: #F3F4F6 !important;
+            color: #111827 !important;
+        }
+        
+        body.light-mode footer .border-gray-700 {
+            border-color: #D1D5DB !important;
+        }
+        
+        body.light-mode .text-gray-300,
+        body.light-mode .text-gray-400 {
+            color: var(--text-primary) !important;
+        }
+        
+        body.light-mode .text-gray-500 {
+            color: #6B7280 !important;
+        }
+        
+        body.light-mode .text-white {
+            color: var(--text-primary) !important;
+        }
+        
+        body.light-mode .gradient-bg {
+            background: linear-gradient(135deg, #F9FAFB 0%, #E5F5F0 100%) !important;
+        }
+        
+        body.light-mode section.bg-bg-light {
+            background: #FFFFFF !important;
+        }
+        
+        body.light-mode [class*="from-[#0F0F0F]"] {
+            background: linear-gradient(to bottom right, #FFFFFF, #F3F4F6) !important;
+        }
+        
+        body.light-mode [class*="bg-[#0F0F0F]"] {
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        body.light-mode [class*="bg-[#1a1a1a]"] {
+            background: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        body.light-mode .border-primary-new\/40,
+        body.light-mode .border-primary-new\/20 {
+            border-color: rgba(16, 185, 129, 0.3) !important;
+        }
+        
+        body.light-mode .border-white\/20 {
+            border-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode .shadow-\[0_0_25px_rgba\(16\,185\,129\,0\.35\)\] {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode .profile-hover .absolute.inset-0.rounded-full.bg-black\/80 {
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
+        
+        body.light-mode .profile-hover .absolute.inset-0.rounded-full.bg-black\/80 .text-white {
+            color: #111827 !important;
+        }
+        
+        body.light-mode .profile-hover .absolute.inset-0.rounded-full.bg-black\/80 .text-gray-300 {
+            color: #6B7280 !important;
+        }
+        
+        body.light-mode .card-hover:hover {
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode .border-t.border-primary-new\/20 {
+            border-top-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode .border-b.border-primary-new\/20 {
+            border-bottom-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        .profile-ring {
+            background: radial-gradient(circle, rgba(16,185,129,0.5), transparent 70%);
+            box-shadow: 0 0 30px rgba(16,185,129,0.4);
+        }
+        .profile-hover::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, rgba(16,185,129,0.4), transparent 60%, rgba(52,211,153,0.4));
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            filter: blur(1px);
+        }
+        .profile-hover:hover::before {
+            opacity: 1;
+            transform: scale(1);
+            animation: spin 3s linear infinite;
+        }
+        .profile-hover img {
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+            transform-style: preserve-3d;
+        }
+        .profile-hover:hover img {
+            box-shadow: 0 0 35px rgba(16,185,129,0.5);
+            transform: rotateY(180deg) scale(1.15);
+        }
     </style>
+    <script>
+        // Charger le thème IMMÉDIATEMENT avant le rendu pour éviter le flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+                document.body.classList.add('light-mode');
+            }
+        })();
+    </script>
 </head>
-<body class="min-h-screen bg-bg-light font-sans text-text-dark">
-    <nav class="fixed w-full bg-[#0F0F0F]/95 backdrop-blur-md z-50 shadow-lg border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4">
+<body class="min-h-screen bg-bg-light font-sans text-text-dark" id="body">
+    <!-- Formes géométriques flottantes pour l'arrière-plan -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    <nav class="fixed w-full bg-[#0F0F0F]/90 backdrop-blur-xl z-50 shadow-2xl border-b border-primary-new/20">
+        <div class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="text-3xl font-extrabold text-gradient animate-fade-in">
-                    Mon Portfolio
+                <a href="index.html" class="text-2xl font-extrabold text-gradient animate-fade-in hover:scale-105 transition-transform duration-300 flex items-center space-x-2">
+                    <div class="w-1.5 h-1.5 bg-accent-new rounded-full animate-pulse"></div>
+                    <span>Mon Portfolio</span>
                 </a>
-                <div class="hidden md:flex space-x-10 font-medium">
-                    <a href="index.html" class="active-link transition-all duration-300 relative group font-bold">
-                        Accueil
-                        <span class="absolute left-0 bottom-0 h-0.5 w-full bg-primary-new transition-all duration-300"></span>
-                    </a>
-                    <a href="parcours.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">
-                        Parcours
-                        <span class="absolute left-0 bottom-0 h-0.5 w-0 bg-primary-new transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="projets.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">
-                        Projets
-                        <span class="absolute left-0 bottom-0 h-0.5 w-0 bg-primary-new transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="experiences.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">
-                        Expériences
-                        <span class="absolute left-0 bottom-0 h-0.5 w-0 bg-primary-new transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="contact.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">
-                        Contact
-                        <span class="absolute left-0 bottom-0 h-0.5 w-0 bg-primary-new transition-all duration-300 group-hover:w-full"></span>
-                    </a>
+                <div class="hidden md:flex items-center space-x-3">
+                    <div class="flex items-center space-x-1 bg-[#1a1a1a]/50 rounded-full px-1.5 py-1 border border-primary-new/20">
+                        <a href="index.html" class="active-link transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-semibold">
+                            <span class="relative z-10">Accueil</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/20 to-accent-new/20 rounded-full opacity-100"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-10 bg-gradient-to-r from-primary-new to-accent-new rounded-full"></span>
+                        </a>
+                        <a href="parcours.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">À propos de moi</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="projets.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Projets</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="experiences.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Expériences</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="explorationtech.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Veille Tech</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="contact.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Contact</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                    </div>
+                    <button id="theme-toggle" class="p-2 rounded-full bg-[#1a1a1a]/50 border border-primary-new/20 hover:bg-primary-new/10 transition-all duration-300 text-gray-300 hover:text-accent-new">
+                        <i class="fas fa-moon text-lg" id="theme-icon"></i>
+                    </button>
                 </div>
-                <div class="md:hidden">
-                    <button class="text-gray-400 hover:text-primary-new">
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg hover:bg-primary-new/10 transition-colors duration-300 text-gray-300 hover:text-accent-new">
+                        <i class="fas fa-moon text-xl" id="theme-icon-mobile"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-accent-new transition-colors duration-300 p-2 rounded-lg hover:bg-primary-new/10">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0F0F0F]/98 backdrop-blur-xl border-t border-primary-new/20">
+            <div class="container mx-auto px-6 py-4 space-y-2">
+                <a href="index.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-home mr-3 text-accent-new text-base"></i>Accueil
+                </a>
+                <a href="parcours.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-graduation-cap mr-3 text-accent-new text-base"></i>Parcours
+                </a>
+                <a href="projets.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-briefcase mr-3 text-accent-new text-base"></i>Projets
+                </a>
+                <a href="experiences.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-chart-line mr-3 text-accent-new text-base"></i>Expériences
+                </a>
+                <a href="explorationtech.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-search mr-3 text-accent-new text-base"></i>Veille Tech
+                </a>
+                <a href="contact.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-envelope mr-3 text-accent-new text-base"></i>Contact
+                </a>
             </div>
         </div>
     </nav>
@@ -121,12 +424,22 @@
     <section id="accueil" class="min-h-screen gradient-bg flex items-center justify-center pt-24 pb-10">
         <div class="container mx-auto px-6 text-center text-white">
             <div class="animate-scale-up">
-                <img 
-                    src="https://skyerty.github.io/portfolio.github.io/images/portrait ia.PNG"#image portrait julian ia
-                    alt="Photo de profil" 
-                    class="w-36 h-36 rounded-full mx-auto mb-8 border-4 border-accent-new/50 shadow-2xl animate-float object-cover object-center"
-                    loading="lazy"
-                />
+                <div class="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto mb-8 group cursor-pointer overflow-hidden rounded-full animate-float border-4 border-white/20 shadow-[0_0_25px_rgba(16,185,129,0.35)] profile-hover">
+                    <img 
+                        src="./image/portrait.png"
+                        alt="Photo de profil" 
+                        class="w-full h-full rounded-full border-4 border-accent-new/50 shadow-2xl object-cover object-center transition-all duration-300 scale-110 group-hover:scale-125"
+                        loading="lazy"
+                    />
+                    <!-- Overlay au survol -->
+                    <div class="absolute inset-0 rounded-full bg-black/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3 scale-90 group-hover:scale-100">
+                        <i class="fas fa-download text-accent-new text-3xl animate-bounce"></i>
+                        <p class="text-white font-semibold text-sm uppercase tracking-wide">Voulez-vous télécharger mon CV ?</p>
+                        <span class="text-xs text-gray-300">Cliquez pour lancer le téléchargement</span>
+                    </div>
+                    <!-- Lien de téléchargement invisible qui couvre toute la zone -->
+                    <a href="https://drive.google.com/uc?export=download&id=1QvJy2UNxnCrHuiJ-lYr9iAnBiuGLwp4e" target="_blank" class="absolute inset-0 rounded-full z-10" aria-label="Télécharger le CV"></a>
+                </div>
                 <h1 class="text-5xl md:text-7xl font-extrabold mb-6 animate-slide-up">
                     Bonjour, je suis <span class="text-accent-new">Julian Lory</span>
                 </h1>
@@ -134,10 +447,115 @@
                     Passioné en informatique
                 </p>
                 <div class="animate-fade-in delay-200">
-                    <a href="projets.html" class="bg-accent-new text-[#1A1A1A] px-10 py-4 rounded-full font-bold shadow-xl hover:bg-primary-new transition-all duration-400 transform hover:scale-105 inline-flex items-center space-x-2">
-                        <span>Voir mes réalisations</span>
-                        <i class="fas fa-arrow-right"></i>
+                    <a href="#qui-suis-je" class="bg-accent-new text-[#1A1A1A] px-12 py-6 rounded-full font-bold shadow-xl hover:bg-primary-new transition-all duration-400 transform hover:scale-105 inline-flex items-center space-x-3 text-xl md:text-2xl">
+                        <span>Qui suis-je ?</span>
+                        <i class="fas fa-arrow-down text-xl md:text-2xl"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="qui-suis-je" class="py-20 bg-bg-light">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-16 text-center animate-slide-up">
+                    <span class="text-gradient">Qui suis-je ?</span>
+                </h2>
+                <div class="space-y-12">
+                    <div class="animate-slide-up">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-primary-new/30 rounded-3xl blur-3xl opacity-50"></div>
+                            <div class="relative bg-gradient-to-br from-[#0F0F0F] to-[#1a1a1a] rounded-3xl p-10 md:p-12 border-2 border-primary-new/40 card-hover shadow-2xl">
+                                <div class="flex items-start mb-8">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-primary-new/30 to-accent-new/30 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0 border border-primary-new/50">
+                                        <i class="fas fa-user-circle text-accent-new text-3xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-2xl md:text-3xl font-bold text-accent-new mb-2">Présentation</h3>
+                                        <div class="h-1 w-20 bg-gradient-to-r from-primary-new to-accent-new rounded-full"></div>
+                                    </div>
+                                </div>
+                                <div class="space-y-6">
+                                    <p class="text-xl md:text-xl text-gray-300 leading-relaxed">
+                                        Depuis mon plus jeune âge, je suis passionné par l'informatique, ce qui m'a naturellement conduit à me spécialiser dans les systèmes et réseaux ainsi que dans le développement de solutions numériques. Mon parcours en BTS SIO option SISR m'a permis de consolider mes compétences dans la conception, le déploiement et la maintenance d'infrastructures informatiques performantes et sécurisées.
+                                    </p>
+                                    <p class="text-xl md:text-xl text-gray-300 leading-relaxed">
+                                        J'apprécie relever des défis techniques complexes et transformer des concepts en solutions opérationnelles, en alliant rigueur, méthodologie et créativité. Mon approche se caractérise par une attention particulière aux détails, une forte capacité d'analyse et un engagement constant à produire des projets fiables, optimisés et adaptés aux besoins réels des utilisateurs.
+                                    </p>
+                                </div>
+                                <div class="flex flex-wrap gap-4 mt-10 pt-8 border-t border-primary-new/20">
+                                    <span class="px-6 py-3 bg-gradient-to-r from-primary-new/20 to-accent-new/20 text-accent-new rounded-full border border-primary-new/40 font-medium text-lg shadow-lg hover:shadow-primary-new/30 transition-all duration-300 hover:scale-105">
+                                        <i class="fas fa-code mr-2"></i>Développement
+                                    </span>
+                                    <span class="px-6 py-3 bg-gradient-to-r from-primary-new/20 to-accent-new/20 text-accent-new rounded-full border border-primary-new/40 font-medium text-lg shadow-lg hover:shadow-primary-new/30 transition-all duration-300 hover:scale-105">
+                                        <i class="fas fa-network-wired mr-2"></i>Systèmes & Réseaux
+                                    </span>
+                                    <span class="px-6 py-3 bg-gradient-to-r from-primary-new/20 to-accent-new/20 text-accent-new rounded-full border border-primary-new/40 font-medium text-lg shadow-lg hover:shadow-primary-new/30 transition-all duration-300 hover:scale-105">
+                                        <i class="fas fa-user-graduate mr-2"></i>Étudiant
+                                    </span>
+                                    <span class="px-6 py-3 bg-gradient-to-r from-primary-new/20 to-accent-new/20 text-accent-new rounded-full border border-primary-new/40 font-medium text-lg shadow-lg hover:shadow-primary-new/30 transition-all duration-300 hover:scale-105">
+                                        <i class="fas fa-shield-alt mr-2"></i>Sécurité
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="animate-scale-up grid md:grid-cols-2 gap-8">
+                        <!-- Bloc Formation -->
+                        <div class="bg-gradient-to-br from-[#0F0F0F] to-[#1a1a1a] rounded-2xl p-8 border-2 border-primary-new/40 card-hover shadow-xl">
+                            <div class="flex items-center mb-6">
+                                <div class="w-14 h-14 bg-gradient-to-br from-primary-new/30 to-accent-new/30 rounded-xl flex items-center justify-center mr-4 border border-primary-new/50">
+                                    <i class="fas fa-graduation-cap text-accent-new text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-accent-new">Formation</h3>
+                                    <div class="h-1 w-16 bg-gradient-to-r from-primary-new to-accent-new rounded-full mt-1"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-5">
+                                <div class="pl-2 border-l-4 border-primary-new">
+                                    <h4 class="text-lg font-bold text-text-dark mb-1">BTS SIO - Option SISR</h4>
+                                    <p class="text-accent-new text-sm font-semibold mb-2">Lycée Chevrollier, Angers • 2024-2026</p>
+                                    <p class="text-gray-400 text-sm">Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                                </div>
+                            </div>
+                            <a href="parcours.html" class="mt-6 inline-flex items-center text-accent-new hover:text-primary-new transition-colors duration-300 text-sm font-semibold">
+                                Voir le parcours complet <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+
+                        <!-- Bloc Objectifs -->
+                        <div class="bg-gradient-to-br from-[#0F0F0F] to-[#1a1a1a] rounded-2xl p-8 border-2 border-primary-new/40 card-hover shadow-xl">
+                            <div class="flex items-center mb-6">
+                                <div class="w-14 h-14 bg-gradient-to-br from-primary-new/30 to-accent-new/30 rounded-xl flex items-center justify-center mr-4 border border-primary-new/50">
+                                    <i class="fas fa-rocket text-accent-new text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-accent-new">Objectifs</h3>
+                                    <div class="h-1 w-16 bg-gradient-to-r from-primary-new to-accent-new rounded-full mt-1"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary-new mr-3 mt-1 flex-shrink-0"></i>
+                                    <p class="text-gray-300">Obtenir mon BTS SIO option SISR et approfondir mes compétences en administration système et réseau</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary-new mr-3 mt-1 flex-shrink-0"></i>
+                                    <p class="text-gray-300">Développer une expertise en cybersécurité et protection des infrastructures</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary-new mr-3 mt-1 flex-shrink-0"></i>
+                                    <p class="text-gray-300">Intégrer une entreprise où je pourrai mettre en pratique mes compétences techniques et continuer à apprendre</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary-new mr-3 mt-1 flex-shrink-0"></i>
+                                    <p class="text-gray-300">Contribuer à des projets innovants en systèmes et réseaux, en alliant rigueur technique et créativité</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -151,15 +569,13 @@
                     <p class="text-gray-400 mt-2 font-light"></p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+                    <a href="https://www.linkedin.com/in/julian-lory-b0a224392/" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
                         <i class="fab fa-linkedin text-3xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+                    <a href="https://github.com/skyerty/portfolio.github.io" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
                         <i class="fab fa-github text-3xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
-                        <i class="fab fa-twitter text-3xl"></i>
-                    </a>
+                    
                 </div>
             </div>
             <div class="text-center text-gray-500 text-sm">
@@ -190,6 +606,102 @@
         styleSheet.type = "text/css";
         styleSheet.innerText = `.is-visible { opacity: 1 !important; transform: translateY(0) scale(1) !important; }.delay-100 { transition-delay: 0.1s; }.delay-200 { transition-delay: 0.2s; }.delay-300 { transition-delay: 0.3s; }.duration-800 { transition-duration: 0.8s; }`;
         document.head.appendChild(styleSheet);
+
+        // Menu mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+        }
+
+        // Theme Toggle - Système global synchronisé
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const body = document.getElementById('body');
+        
+        // Fonction pour appliquer le thème
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                document.documentElement.classList.add('light-mode');
+            } else {
+                body.classList.remove('light-mode');
+                document.documentElement.classList.remove('light-mode');
+            }
+            
+            // Mettre à jour les icônes
+            if (themeIcon) {
+                if (theme === 'light') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+            
+            if (themeIconMobile) {
+                if (theme === 'light') {
+                    themeIconMobile.classList.remove('fa-moon');
+                    themeIconMobile.classList.add('fa-sun');
+                } else {
+                    themeIconMobile.classList.remove('fa-sun');
+                    themeIconMobile.classList.add('fa-moon');
+                }
+            }
+        }
+        
+        // Charger le thème sauvegardé au démarrage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+        // Fonction pour basculer le thème
+        function toggleTheme() {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Sauvegarder la préférence
+            localStorage.setItem('theme', newTheme);
+            
+            // Appliquer le nouveau thème
+            applyTheme(newTheme);
+            
+            // Déclencher un événement storage pour synchroniser les autres onglets
+            window.dispatchEvent(new StorageEvent('storage', {
+                key: 'theme',
+                newValue: newTheme,
+                oldValue: currentTheme
+            }));
+        }
+
+        // Écouter les changements de thème depuis d'autres onglets
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'theme') {
+                applyTheme(e.newValue || 'dark');
+            }
+        });
+
+        // Attacher les événements
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
+        }
     </script>
 </body>
 </html>

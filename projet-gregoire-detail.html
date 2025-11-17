@@ -1,130 +1,321 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <base target="_self">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails du Projet - Grégoire Construction</title>
+    <title>Mon Portfolio - Projet Grégoire Construction</title>
+    <meta name="description" content="Refonte complète de l'infrastructure IT de Grégoire Construction : Active Directory, services réseau, GLPI, sécurisation et sauvegarde.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-new': '#10B981',
+                        'secondary-new': '#065F46',
+                        'accent-new': '#34D399',
+                        'bg-light': '#0B0B0D',
+                        'card-dark': '#141414',
+                        'card-darker': '#0F0F0F',
+                        'text-dark': '#F9FAFB'
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0px)', opacity: 1 }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        .text-gradient { background: linear-gradient(45deg, #34D399 0%, #10B981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .bg-dark-section { background-color: #2C2C2C; }
+        body {
+            background: radial-gradient(circle at top right, rgba(16,185,129,0.15), transparent 40%),
+                        radial-gradient(circle at 20% 20%, rgba(52,211,153,0.2), transparent 45%),
+                        #050505;
+            color: #F9FAFB;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+            backdrop-filter: blur(12px);
+        }
+        .text-gradient {
+            background: linear-gradient(120deg, #34D399, #10B981);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+        .badge-pill {
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #9CA3AF;
+            background: rgba(255,255,255,0.03);
+        }
+        .accent-ring {
+            box-shadow: 0 0 0 2px rgba(16,185,129,0.2);
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1.125rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(16,185,129,0), rgba(16,185,129,0.7), rgba(16,185,129,0));
+        }
+        
+        /* Mode sombre/clair */
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #0F0F0F;
+            --bg-card: rgba(20, 20, 20, 0.8);
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --border-color: rgba(255,255,255,0.06);
+        }
+        
+        body.light-mode {
+            --bg-primary: #F9FAFB;
+            --bg-secondary: #FFFFFF;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --border-color: rgba(0,0,0,0.1);
+            background: radial-gradient(circle at top right, rgba(16,185,129,0.08), transparent 40%),
+                        radial-gradient(circle at 20% 20%, rgba(52,211,153,0.06), transparent 45%),
+                        var(--bg-primary) !important;
+        }
+        
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-bottom-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode #mobile-menu {
+            background: rgba(255, 255, 255, 0.98) !important;
+            border-top-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode footer {
+            background: #F3F4F6 !important;
+            color: #111827 !important;
+        }
+        
+        body.light-mode .glass-card {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-color: rgba(0,0,0,0.1) !important;
+        }
+        
+        body.light-mode .text-gray-300,
+        body.light-mode .text-gray-400 {
+            color: var(--text-primary) !important;
+        }
+        
+        body.light-mode .text-white {
+            color: var(--text-primary) !important;
+        }
     </style>
+    <script>
+        // Charger le thème IMMÉDIATEMENT avant le rendu pour éviter le flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+                document.body.classList.add('light-mode');
+            }
+        })();
+    </script>
 </head>
-<body class="min-h-screen font-sans text-gray-100" style="background-color: #1A1A1A;">
-    <nav class="fixed w-full bg-[#0F0F0F]/95 backdrop-blur-md z-50 shadow-lg border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4">
+<body class="min-h-screen text-text-dark" id="body">
+    <nav class="fixed w-full bg-[#0F0F0F]/90 backdrop-blur-xl z-50 shadow-2xl border-b border-primary-new/20">
+        <div class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="text-3xl font-extrabold text-gradient">Mon Portfolio</a>
-                <div class="hidden md:flex space-x-10 font-medium">
-                    <a href="index.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Accueil</a>
-                    <a href="parcours.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Parcours</a>
-                    <a href="projets.html" class="text-primary-new relative group">Projets</a>
-                    <a href="experiences.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Expériences</a>
-                    <a href="contact.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Contact</a>
+                <a href="index.html" class="text-2xl font-extrabold text-gradient animate-fade-in hover:scale-105 transition-transform duration-300 flex items-center space-x-2">
+                    <div class="w-1.5 h-1.5 bg-accent-new rounded-full animate-pulse"></div>
+                    <span>Mon Portfolio</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-3">
+                    <div class="flex items-center space-x-1 bg-[#1a1a1a]/50 rounded-full px-1.5 py-1 border border-primary-new/20">
+                        <a href="index.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Accueil</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="parcours.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">À propos de moi</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="projets.html" class="active-link text-primary-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-semibold">
+                            <span class="relative z-10 text-primary-new">Projets</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/20 to-accent-new/20 rounded-full opacity-100"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-10 bg-gradient-to-r from-primary-new to-accent-new rounded-full"></span>
+                        </a>
+                        <a href="experiences.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Expériences</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="explorationtech.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Veille Tech</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="contact.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Contact</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                    </div>
+                    <button id="theme-toggle" class="p-2 rounded-full bg-[#1a1a1a]/50 border border-primary-new/20 hover:bg-primary-new/10 transition-all duration-300 text-gray-300 hover:text-accent-new">
+                        <i class="fas fa-moon text-lg" id="theme-icon"></i>
+                    </button>
                 </div>
-                <div class="md:hidden"><button class="text-gray-400 hover:text-primary-new"><i class="fas fa-bars text-xl"></i></button></div>
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg hover:bg-primary-new/10 transition-colors duration-300 text-gray-300 hover:text-accent-new">
+                        <i class="fas fa-moon text-xl" id="theme-icon-mobile"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-accent-new transition-colors duration-300 p-2 rounded-lg hover:bg-primary-new/10">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0F0F0F]/98 backdrop-blur-xl border-t border-primary-new/20">
+            <div class="container mx-auto px-6 py-4 space-y-2">
+                <a href="index.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-home mr-3 text-accent-new text-base"></i>Accueil
+                </a>
+                <a href="parcours.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-graduation-cap mr-3 text-accent-new text-base"></i>Parcours
+                </a>
+                <a href="projets.html" class="block text-accent-new bg-primary-new/10 px-4 py-3 rounded-lg font-medium">
+                    <i class="fas fa-briefcase mr-3 text-accent-new text-base"></i>Projets
+                </a>
+                <a href="experiences.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-chart-line mr-3 text-accent-new text-base"></i>Expériences
+                </a>
+                <a href="explorationtech.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-search mr-3 text-accent-new text-base"></i>Veille Tech
+                </a>
+                <a href="contact.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-envelope mr-3 text-accent-new text-base"></i>Contact
+                </a>
             </div>
         </div>
     </nav>
 
-    <section id="detail-projet" class="py-24">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <h1 class="text-5xl font-extrabold text-center mb-6 text-text-dark pt-10">
-                <span class="text-gradient">Transformation numérique de Grégoire Construction</span>
-            </h1>
-            <p class="text-xl text-center text-gray-400 mb-12">
-                Mise en place d'une infrastructure IT complète, sécurisée et centralisée pour l'entreprise Grégoire Construction.
-            </p>
-
-            <div class="space-y-12">
-                
-                <div class="bg-dark-section p-8 rounded-xl shadow-2xl border-l-4 border-indigo-500">
-                    <h2 class="text-3xl font-bold mb-4 text-indigo-400 flex items-center"><i class="fas fa-network-wired mr-3"></i> Infrastructure Active Directory</h2>
-                    <p class="mb-4">
-                        L'Active Directory (AD) a été mis en place pour centraliser les utilisateurs et sécuriser l’accès aux ressources du réseau. Le domaine actif est <code>gregoireconstruction.fr</code>.
-                    </p>
-                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
-                        <li>Création structurée des utilisateurs et groupes par services.</li>
-                        <li>Comptes personnalisés avec des privilèges spécifiques.</li>
-                        <li>Organisation hiérarchique des données avec des répertoires personnels et de groupes structurés.</li>
-                    </ul>
+    <main class="pt-32 pb-24">
+        <section class="container mx-auto px-6 max-w-6xl">
+            <div class="glass-card rounded-3xl p-10 md:p-14 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-30 pointer-events-none" style="background: radial-gradient(circle at 80% 20%, rgba(16,185,129,0.6), transparent 45%);"></div>
+                <div class="relative grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <span class="badge-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest">cas réel</span>
+                            <span class="text-gray-400 text-sm">2025 • 2 mois</span>
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-gradient">Projet Grégoire Construction</h1>
+                        <p class="text-gray-300 text-lg">Refonte complète du système d’information d’un promoteur immobilier (35 collaborateurs)
+                            Mise en place d’un domaine Active Directory, GLPI, sauvegardes et sécurisation du réseau </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="badge-pill px-4 py-2 rounded-full text-sm">Active Directory</span>
+                            <span class="badge-pill px-4 py-2 rounded-full text-sm">DNS / DHCP</span>
+                            <span class="badge-pill px-4 py-2 rounded-full text-sm">GLPI</span>
+                            <span class="badge-pill px-4 py-2 rounded-full text-sm">Sécurité & sauvegarde</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="glass-card rounded-3xl p-10 h-full flex flex-col justify-center text-center border border-primary-new/30 accent-ring">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-400">Utilisateurs gérés</p>
+                            <p class="text-6xl md:text-7xl font-black text-white mt-4 leading-none">35</p>
+                            <p class="text-lg text-gray-300 mt-6">Collaborateurs synchronisés via Active Directory,(GPO + scripts PowerShell) et droits par service.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="bg-dark-section p-8 rounded-xl shadow-2xl border-l-4 border-yellow-500">
-                    <h2 class="text-3xl font-bold mb-4 text-yellow-400 flex items-center"><i class="fas fa-cogs mr-3"></i> Services Réseau Fondamentaux & GPO</h2>
-                    <p class="mb-4">
-                        Les services essentiels DNS et DHCP ont été configurés pour assurer la connectivité, complétés par une stratégie de sécurité et d'administration centralisée via les GPO (Group Policy Objects).
-                    </p>
-                    <h3 class="text-xl font-semibold mt-4 mb-2">Services Réseau :</h3>
-                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
-                        <li>Service DNS : DNS 1 : 192.168.37.201, DNS 2 : 192.168.10.1</li>
-                        <li>Service DHCP : Plage d'attribution de 192.168.37.205 à 192.168.37.250</li>
-                    </ul>
-                    <h3 class="text-xl font-semibold mt-4 mb-2">Configuration des GPO :</h3>
-                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
-                        <li>Sécurité renforcée : Blocage des ports USB (selon services) et restrictions va le Panneau de configuration</li>
-                        <li>Mappage automatique des lecteurs réseau personnels et de services</li>
-                        <li>Déploiement logiciel automatisé (Chrome et agent GLPI)</li>
-                        <li>Personnalisation : Fond d'écran uniforme pour l'identité visuelle</li>
-                    </ul>
-                </div>
-
-                <div class="bg-dark-section p-8 rounded-xl shadow-2xl border-l-4 border-green-500">
-                    <h2 class="text-3xl font-bold mb-4 text-green-400 flex items-center"><i class="fas fa-server mr-3"></i> Serveur Web (Debian 12) & Solution GLPI</h2>
-                    <p class="mb-4">
-                        Un serveur Debian 12 a été configuré pour héberger l'image publique de l'entreprise et centraliser la gestion du parc informatique
-                    </p>
-                    <h3 class="text-xl font-semibold mt-4 mb-2">Serveur Web :</h3>
-                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
-                        <li>Installation d'Apache 2 avec configuration de virtuals hosts</li>
-                        <li>Configuration du nom de domaine <code>www.gregoireconstruction.fr</code> avec certificats de sécurité (via hôte DNS)</li>
-                        <li>Déploiement d'un site vitrine</li>
-                    </ul>
-                    <h3 class="text-xl font-semibold mt-4 mb-2">Solution GLPI :</h3>
-                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
-                        <li>Gestion centralisée des incidents et inventaire automatisé des équipements (via Agent GLPI)</li>
-                        <li>Authentification simplifiée via les identifiants Active Directory</li>
-                        <li>Tableau de bord pour la visualisation de l'état du parc</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-dark-section p-8 rounded-xl shadow-2xl border-l-4 border-red-500">
-                    <h2 class="text-3xl font-bold mb-4 text-red-400 flex items-center"><i class="fas fa-database mr-3"></i> Base de Données & Stratégie de Sauvegarde</h2>
-                    <p class="mb-4">
-                        La pérennité et la sécurité des données critiques sont assurées par un serveur de Base de Données isolé et une stratégie de sauvegarde robuste
-                    </p>
-                    <h3 class="text-xl font-semibold mt-4 mb-2">Serveur de Base de Données (Debian 12) :</h3>
-                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
-                        <li>Moteur MariaDB, performant et sécurisé</li>
-                        <li>Centralisation de toutes les données applicatives pour un point de gestion unique</li>
-                        <li>Isolement pour renforcer la sécurité contre les menaces (ex: ransomwares)</li>
-                    </ul>
-                    <h3 class="text-xl font-semibold mt-4 mb-2">Stratégie de Sauvegarde :</h3>
-                    <ul class="list-disc list-inside ml-4 text-gray-300 space-y-2">
-                        <li>Scripts Bash automatisés pour la sauvegarde des serveurs web et base de données</li>
-                        <li>Transfert sécurisé vers un NAS (OpenMediaVault) via SCP avec clés RSA</li>
-                        <li>Le script automatise le dump de la base de données GLPI, la récupération des fichiers via SCP, la compression en `.tar.gz` et le transfert vers le NAS distant</li>
-                    </ul>
-                </div>
-
-                <div class="p-6 border-2 border-primary-new rounded-xl text-center">
-                    <h2 class="text-2xl font-bold mb-2 text-primary-new">Conclusion</h2>
-                    <p class="text-gray-300">
-                        Cette nouvelle infrastructure IT offre à Grégoire Construction une solution complète et sécurisée, garantissant une sécurité renforcée contre les ransomwares, une efficacité opérationnelle grâce à GLPI et l'AD, ainsi que la pérennité des données grâce à une stratégie de sauvegarde robuste
-                    </p>
-                </div>
-
-                <div class="text-center pt-8">
-                    <a href="projets.html" class="bg-primary-new text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-accent-new transition-all duration-300">
-                        <i class="fas fa-arrow-left mr-2"></i> Retour aux Projets
-                    </a>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="container mx-auto px-6 max-w-6xl mt-16 grid lg:grid-cols-3 gap-6">
+            <div class="glass-card rounded-2xl p-8">
+                <h3 class="text-xl font-bold mb-3 flex items-center space-x-3"><i class="fas fa-bullseye text-primary-new text-2xl"></i><span>Contexte du projet </span></h3>
+                <ul class="space-y-3 text-gray-300 text-sm">
+                    <li>• Grégoire Construction est un promoteur immobilier familial dirigé par Martin Grégoire (fils du fondateur).
+
+                        L’entreprise a subi deux attaques ransomware en 2024 avec perte des fichiers clients → aucun système structuré auparavant (comptes locaux, pas de sauvegarde centralisée, groupe de travail).</li>
+                    
+                </ul>
+            </div>
+            <div class="glass-card rounded-2xl p-8">
+                <h3 class="text-xl font-bold mb-3 flex items-center space-x-3"><i class="fas fa-route text-primary-new text-2xl"></i><span>Contraintes</span></h3>
+                <ul class="space-y-3 text-gray-300 text-sm">
+                    <li>• Domaine Active Directory : <code class="text-white">gregoireconstruction.fr</code>.</li>
+                    <li>• Serveurs Debian spécialisés (web, BD, GLPI, sauvegardes).</li>
+                    <li>• Politique GPO complète par métier et par site.</li>
+                </ul>
+            </div>
+            
+        </section>
+
+        <section class="container mx-auto px-6 max-w-6xl mt-20">
+            <div class="mb-8 flex items-center justify-between flex-wrap gap-4">
+                <div>
+                    <p class="badge-pill px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-widest">Architecture cible</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-4">Un socle robuste, segmenté et observable</h2>
+                </div>
+                <a href="projets.html" class="inline-flex items-center px-5 py-3 rounded-full text-sm font-semibold bg-gradient-to-r from-primary-new to-accent-new text-black hover:shadow-lg transition">
+                    <i class="fas fa-arrow-left mr-2"></i>Retour aux projets
+                </a>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="glass-card rounded-3xl p-8 space-y-4 border border-primary-new/30 accent-ring">
+                    <h3 class="text-2xl font-semibold flex items-center space-x-3"><i class="fas fa-network-wired text-primary-new"></i><span>Identité & services réseau</span></h3>
+                    <p class="text-gray-300 text-sm">Active Directory Windows Server 2022, deux contrôleurs pour garantir la redondance.</p>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li>• OU structurées par direction, avec GPO différenciées (Finance, Chantier, Direction).</li>
+                        <li>• Gestion du DNS primaire et secondaire, incluant zones inverses et enregistrements SRV.</li>
+                        <li>• DHCP en haute disponibilité avec pools et réservations pour équipements critiques.</li>
+                        <li>• Scripts PowerShell pour onboarding automatisé (création compte, membership, lecteurs).</li>
+                    </ul>
+                </div>
+                <div class="glass-card rounded-3xl p-8 space-y-4 border border-accent-new/30">
+                    <h3 class="text-2xl font-semibold flex items-center space-x-3"><i class="fas fa-server text-accent-new"></i><span>Services applicatifs & supervision</span></h3>
+                    <p class="text-gray-300 text-sm">Stack Debian 12 segmentée : Web, GLPI, Base de données et sauvegardes.</p>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li>• Serveur Web Apache2 + virtual hosts sécurisés pour <code class="text-white">www.gregoireconstruction.fr</code>.</li>
+                        <li>• GLPI + agent automatisé, authentification AD (LDAP over TLS) et inventaire horaire.</li>
+                        <li>• MariaDB isolée (VLAN dédié, pare-feu restrictif) avec chiffrement au repos.</li>
+                        <li>• NAS OpenMediaVault pour centraliser snapshots, monté en NFS sécurisé.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+       
+
+        
+    </main>
+
     <footer class="bg-[#0F0F0F] text-white py-12">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 pb-8 mb-8">
@@ -133,15 +324,13 @@
                     <p class="text-gray-400 mt-2 font-light"></p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+                    <a href="https://www.linkedin.com/in/julian-lory-b0a224392/" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
                         <i class="fab fa-linkedin text-3xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+                    <a href="https://github.com/skyerty/portfolio.github.io" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
                         <i class="fab fa-github text-3xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
-                        <i class="fab fa-twitter text-3xl"></i>
-                    </a>
+                    
                 </div>
             </div>
             <div class="text-center text-gray-500 text-sm">
@@ -150,5 +339,102 @@
         </div>
     </footer>
 
-    </body>
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+        }
+
+        // Theme Toggle - Système global synchronisé
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const body = document.getElementById('body');
+        
+        // Fonction pour appliquer le thème
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                document.documentElement.classList.add('light-mode');
+            } else {
+                body.classList.remove('light-mode');
+                document.documentElement.classList.remove('light-mode');
+            }
+            
+            // Mettre à jour les icônes
+            if (themeIcon) {
+                if (theme === 'light') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+            
+            if (themeIconMobile) {
+                if (theme === 'light') {
+                    themeIconMobile.classList.remove('fa-moon');
+                    themeIconMobile.classList.add('fa-sun');
+                } else {
+                    themeIconMobile.classList.remove('fa-sun');
+                    themeIconMobile.classList.add('fa-moon');
+                }
+            }
+        }
+        
+        // Charger le thème sauvegardé au démarrage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+        // Fonction pour basculer le thème
+        function toggleTheme() {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Sauvegarder la préférence
+            localStorage.setItem('theme', newTheme);
+            
+            // Appliquer le nouveau thème
+            applyTheme(newTheme);
+            
+            // Déclencher un événement storage pour synchroniser les autres onglets
+            window.dispatchEvent(new StorageEvent('storage', {
+                key: 'theme',
+                newValue: newTheme,
+                oldValue: currentTheme
+            }));
+        }
+
+        // Écouter les changements de thème depuis d'autres onglets
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'theme') {
+                applyTheme(e.newValue || 'dark');
+            }
+        });
+
+        // Attacher les événements
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
+        }
+    </script>
+</body>
 </html>
+

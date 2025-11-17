@@ -1,209 +1,661 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <base target="_self">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio - Parcours</title>
-    <meta name="description" content="Formation et compétences techniques de mon portfolio professionnel.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-new': '#10B981', 
-                        'secondary-new': '#065F46', 
-                        'accent-new': '#34D399', 
-                        'bg-light': '#1A1A1A', 
-                        'text-dark': '#F9FAFB', 
-                    },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    animation: {
-                        'fade-in': 'fadeIn 1s ease-out',
-                        'slide-up': 'slideUp 0.8s ease-out',
-                        'scale-up': 'scaleUp 0.8s ease-out'
-                    },
-                    keyframes: {
-                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        slideUp: { '0%': { transform: 'translateY(50px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
-                        scaleUp: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } }
-                    }
-                }
-            }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parcours | Julian Lory</title>
+  <meta name="description" content="Découverte de mon parcours académique, certifications et expertises techniques en systèmes, réseaux et cybersécurité." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Parcours | Julian Lory" />
+  <meta property="og:description" content="BTS SIO SISR en cours, Bac Pro SN RISC mention TB, certifications cybersécurité et compétences DevOps." />
+  <meta property="og:type" content="website" />
+
+  <!-- Assets -->
+  <link rel="icon" href="favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-new': '#10B981',
+            'secondary-new': '#065F46',
+            'accent-new': '#34D399',
+            'bg-light': '#1A1A1A',
+            'text-dark': '#F9FAFB',
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'], },
+          animation: {
+            'fade-in': 'fadeIn 1s ease-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'scale-up': 'scaleUp 0.8s ease-out',
+            'float': 'float 4s ease-in-out infinite',
+            'gradient-x': 'gradientX 8s ease infinite',
+          },
+          keyframes: {
+            fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+            slideUp: { '0%': { transform: 'translateY(50px)', opacity: 0 }, '100%': { transform: 'translateY(0)', opacity: 1 } },
+            scaleUp: { '0%': { transform: 'scale(0.8)', opacity: 0 }, '100%': { transform: 'scale(1)', opacity: 1 } },
+            float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } },
+            gradientX: { '0%, 100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } },
+          }
         }
-    </script>
-    <style>
-        .gradient-bg { background: linear-gradient(135deg, #1A1A1A 0%, #065F46 100%); }
-        .card-hover { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3); }
-        .text-gradient { background: linear-gradient(45deg, #34D399 0%, #10B981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .border-primary-new { border-color: #10B981; }
-        .border-secondary-new { border-color: #065F46; }
-        .border-accent-new { border-color: #34D399; }
-        .active-link { color: #10B981; font-weight: 700; }
-        /* Fond de carte sombre et bordure claire */
-        .card-dark { background-color: #2C2C2C; border: 1px solid #3A3A3A; }
-    </style>
-</head>
-<body class="min-h-screen font-sans text-text-dark" style="background-color: #1A1A1A; background-image: url(...);">
+      }
+    }
+  </script>
 
-    <nav class="fixed w-full bg-[#0F0F0F]/95 backdrop-blur-md z-50 shadow-lg border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="text-3xl font-extrabold text-gradient animate-fade-in">Mon Portfolio</a>
-                <div class="hidden md:flex space-x-10 font-medium">
-                    <a href="index.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Accueil</a>
-                    <a href="parcours.html" class="active-link relative group"> Parcours
-                        <span class="absolute left-0 bottom-0 h-0.5 w-full bg-primary-new transition-all duration-300"></span>
-                    </a>
-                    <a href="projets.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Projets</a>
-                    <a href="experiences.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Expériences</a>
-                    <a href="contact.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Contact</a>
-                </div>
-                <div class="md:hidden"><button class="text-gray-400 hover:text-primary-new"><i class="fas fa-bars text-xl"></i></button></div>
-            </div>
-        </div>
-    </nav>
+  <style>
+    * { scroll-behavior: smooth; }
+    body { background: #0a0a0a; position: relative; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(6, 95, 70, 0.12) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+      z-index: 0; pointer-events: none;
+    }
+    body::after {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(16, 185, 129, 0.03) 2px, rgba(16, 185, 129, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(52, 211, 153, 0.02) 2px, rgba(52, 211, 153, 0.02) 4px);
+      z-index: 0; pointer-events: none;
+      animation: gridMove 20s linear infinite;
+    }
+    @keyframes gridMove { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+    .floating-shapes { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .shape { position: absolute; opacity: 0.1; animation: float 20s infinite ease-in-out; }
+    .shape-1 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(16, 185, 129, 0.3), transparent); border-radius: 50%; top: 10%; left: 10%; animation-delay: 0s; }
+    .shape-2 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(52, 211, 153, 0.2), transparent); border-radius: 50%; top: 60%; right: 15%; animation-delay: 5s; }
+    .shape-3 { width: 250px; height: 250px; background: radial-gradient(circle, rgba(6, 95, 70, 0.25), transparent); border-radius: 50%; bottom: 20%; left: 20%; animation-delay: 10s; }
+    main, section, nav, footer { position: relative; z-index: 1; }
+
+    .glass { backdrop-filter: blur(18px); background: linear-gradient(135deg, rgba(15,23,42,0.85), rgba(15,15,15,0.9)); border: 1px solid rgba(148,163,184,0.12); }
+    .gradient-text { background: linear-gradient(45deg, #34D399 0%, #10B981 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .chip { background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(94, 234, 212, 0.25); }
+    .pill { border: 1px solid rgba(148,163,184,0.2); background: rgba(15,15,15,0.8); }
+    .timeline::before { content: ""; position: absolute; inset: 0 auto 0 50%; width: 2px; background: linear-gradient(180deg, rgba(94,234,212,0.05), rgba(16,185,129,0.6), rgba(94,234,212,0.05)); transform: translateX(-50%); }
+    .timeline-step::after { content: ""; position: absolute; top: 24px; left: 50%; transform: translate(-50%, -50%); width: 18px; height: 18px; border-radius: 999px; background: linear-gradient(135deg, #34D399, #10B981); border: 4px solid #111; box-shadow: 0 0 22px rgba(16, 185, 129, 0.6); z-index: 10; }
+    @media (max-width: 768px) { .timeline::before, .timeline-step::after { left: 18px; transform: translateY(-50%); } }
+    .active-link { color: #10B981; font-weight: 700; }
+
+    /* Styles pour la nouvelle section expertises */
+    .chip-glow {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(16,185,129,0.4);
+      background: rgba(255,255,255,0.05);
+      color: #34D399;
+      box-shadow: 0 0 15px rgba(16,185,129,0.4);
+      transition: all 0.3s ease;
+    }
+    .chip-glow:hover { box-shadow: 0 0 25px rgba(16,185,129,0.8); transform: translateY(-2px); }
+    .animate-gradient-x { background-size: 200% 200%; animation: gradientX 8s ease infinite; }
     
-    <section id="parcours" class="py-24">
-        <div class="container mx-auto px-6">
-            <h1 class="text-5xl font-extrabold text-center mb-16 text-text-dark pt-10 animate-slide-up">
-                <span class="text-gradient">Mon Parcours</span>
-            </h1>
+    /* Mode sombre/clair */
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #0F0F0F;
+      --bg-card: rgba(15,15,15,0.9);
+      --text-primary: #F9FAFB;
+      --text-secondary: #9CA3AF;
+      --border-color: rgba(255,255,255,0.08);
+    }
+    
+    body.light-mode {
+      --bg-primary: #F9FAFB;
+      --bg-secondary: #FFFFFF;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --text-primary: #111827;
+      --text-secondary: #6B7280;
+      --border-color: rgba(0,0,0,0.1);
+    }
+    
+    body.light-mode::before {
+      background:
+        radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(6, 95, 70, 0.06) 0%, transparent 50%),
+        linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 50%, #F3F4F6 100%) !important;
+    }
+    
+    body.light-mode::after {
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(16, 185, 129, 0.015) 2px, rgba(16, 185, 129, 0.015) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(52, 211, 153, 0.01) 2px, rgba(52, 211, 153, 0.01) 4px) !important;
+    }
+    
+    body.light-mode nav {
+      background: rgba(255, 255, 255, 0.9) !important;
+      border-bottom-color: rgba(16, 185, 129, 0.2) !important;
+    }
+    
+    body.light-mode #mobile-menu {
+      background: rgba(255, 255, 255, 0.98) !important;
+      border-top-color: rgba(16, 185, 129, 0.2) !important;
+    }
+    
+    body.light-mode footer {
+      background: #F3F4F6 !important;
+      color: #111827 !important;
+    }
+    
+    body.light-mode footer .border-gray-700 {
+      border-color: #D1D5DB !important;
+    }
+    
+    body.light-mode .text-gray-300,
+    body.light-mode .text-gray-400 {
+      color: var(--text-primary) !important;
+    }
+    
+    body.light-mode .text-white {
+      color: var(--text-primary) !important;
+    }
+    
+    body.light-mode .glass {
+      background: rgba(255, 255, 255, 0.9) !important;
+      border-color: rgba(0,0,0,0.1) !important;
+    }
+  </style>
+  <script>
+    // Charger le thème IMMÉDIATEMENT avant le rendu pour éviter le flash
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-mode');
+        document.body.classList.add('light-mode');
+      }
+    })();
+  </script>
+</head>
+
+<body class="min-h-screen bg-bg-light font-sans text-text-dark antialiased" id="body">
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-[#0F0F0F]/90 backdrop-blur-xl z-50 shadow-2xl border-b border-primary-new/20">
+    <div class="container mx-auto px-6 py-3">
+      <div class="flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-extrabold hover:scale-105 transition-transform duration-300 flex items-center space-x-2">
+          <div class="w-1.5 h-1.5 bg-accent-new rounded-full animate-pulse"></div>
+          <span class="text-primary-new">Mon Portfolio</span>
+        </a>
+        <div class="hidden md:flex items-center space-x-3">
+          <div class="flex items-center space-x-1 bg-[#1a1a1a]/50 rounded-full px-1.5 py-1 border border-primary-new/20">
+            <a href="index.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+              <span class="relative z-10">Accueil</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+            </a>
+            <a href="parcours.html" class="active-link transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-semibold">
+              <span class="relative z-10">À propos de moi</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-primary-new/20 to-accent-new/20 rounded-full opacity-100"></span>
+              <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-10 bg-gradient-to-r from-primary-new to-accent-new rounded-full"></span>
+            </a>
+            <a href="projets.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+              <span class="relative z-10">Projets</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+            </a>
+            <a href="experiences.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+              <span class="relative z-10">Expériences</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+            </a>
+            <a href="explorationtech.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+              <span class="relative z-10">Veille Tech</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+            </a>
+            <a href="contact.html" class="text-gray-300 hover:text-accent-new transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+              <span class="relative z-10">Contact</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-primary-new/10 to-accent-new/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-new to-accent-new rounded-full group-hover:w-10 transition-all duration-300"></span>
+            </a>
+          </div>
+          <button id="theme-toggle" class="p-2 rounded-full bg-[#1a1a1a]/50 border border-primary-new/20 hover:bg-primary-new/10 transition-all duration-300 text-gray-300 hover:text-accent-new">
+            <i class="fas fa-moon text-lg" id="theme-icon"></i>
+          </button>
+        </div>
+        <div class="md:hidden flex items-center space-x-2">
+          <button id="theme-toggle-mobile" class="p-2 rounded-lg hover:bg-primary-new/10 transition-colors duration-300 text-gray-300 hover:text-accent-new">
+            <i class="fas fa-moon text-xl" id="theme-icon-mobile"></i>
+          </button>
+          <button id="mobile-menu-btn" class="text-gray-300 hover:text-accent-new p-2 rounded-lg hover:bg-primary-new/10">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0F0F0F]/98 backdrop-blur-xl border-t border-primary-new/20">
+      <div class="container mx-auto px-6 py-4 space-y-2">
+        <a href="index.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium"><i class="fas fa-home mr-3 text-accent-new text-base"></i>Accueil</a>
+        <a href="parcours.html" class="block text-accent-new bg-primary-new/10 px-4 py-3 rounded-lg font-medium"><i class="fas fa-graduation-cap mr-3 text-accent-new text-base"></i>Parcours</a>
+        <a href="projets.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium"><i class="fas fa-briefcase mr-3 text-accent-new text-base"></i>Projets</a>
+        <a href="experiences.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium"><i class="fas fa-chart-line mr-3 text-accent-new text-base"></i>Expériences</a>
+        <a href="explorationtech.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium"><i class="fas fa-search mr-3 text-accent-new text-base"></i>Veille Tech</a>
+        <a href="contact.html" class="block text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium"><i class="fas fa-envelope mr-3 text-accent-new text-base"></i>Contact</a>
+        <div class="pt-2 border-t border-primary-new/20 mt-2">
+          <button id="theme-toggle-mobile-menu" class="w-full flex items-center text-gray-300 hover:text-accent-new hover:bg-primary-new/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+            <i class="fas fa-moon mr-3 text-accent-new text-base" id="theme-icon-mobile-menu"></i>Mode sombre/clair
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="relative pt-40 pb-24 px-5">
+    <div class="max-w-6xl mx-auto space-y-24">
+
+      <!-- Hero -->
+      <header class="text-center space-y-10">
+        <div class="inline-flex items-center gap-3 chip px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.2em] text-accent-new">
+          <i class="fas fa-route text-white/80"></i><span>Mon parcours</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          Mon Parcours & Mes Compétences<br />
+          
+        </h1>
+        <p class="max-w-3xl mx-auto text-lg text-gray-400 leading-relaxed">
+          De mes premières découvertes du réseau jusqu’à mon BTS SIO SISR, chaque étape a renforcé ma vision : concevoir et orchestrer des environnements hybrides, résilients et entièrement observables.
+        </p>
+      </header>
+
+      <!-- Highlights -->
+      <section class="grid md:grid-cols-3 gap-6">
+        <article class="glass rounded-3xl p-6 flex flex-col gap-5">
+          <div class="flex items-center gap-3">
             
-            <div class="grid lg:grid-cols-2 gap-16">
-                <div class="animate-slide-up">
-                    <h2 class="text-3xl font-bold mb-10 text-primary-new flex items-center border-b border-gray-800 pb-3">
-                        <i class="fas fa-graduation-cap text-accent-new mr-4 text-3xl"></i>
-                        Formation
-                    </h2>
-                    <div class="space-y-8">
-                        
-                        <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-primary-new transform hover:shadow-2xl">
-                            <h4 class="text-2xl font-bold text-text-dark flex items-center">
-                                BTS Services Informatiques aux Organisations
-                                <span class="ml-3 px-3 py-1 text-sm font-semibold rounded-full bg-primary-new/20 text-primary-new">SISR</span>
-                            </h4>
-                            <p class="text-accent-new font-semibold mb-3">Lycée Chevrollier, Angers • 2024-2026</p>
-                            <p class="text-gray-400">Option Solutions d'Infrastructure, Systèmes et Réseaux. Axé sur l'administration, la maintenance et la sécurisation des infrastructures.</p>
-                        </div>
-                        
-                        <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-secondary-new transform hover:shadow-2xl">
-                            <h4 class="text-2xl font-bold text-text-dark flex items-center">
-                                Baccalauréat professionnel Système Numérique (RISC)
-                                <span class="text-sm font-extrabold text-yellow-500 bg-yellow-500/20 px-3 py-1 rounded-full ml-auto self-start text-center">Mention Très Bien</span>
-                            </h4>
-                            <p class="text-accent-new font-semibold mb-3">Lycée Touchard Washington, Le Mans • 2021-2024</p>
-                            <p class="text-gray-400">Option Réseaux Informatiques et Systèmes Communicants. Diplômé avec distinction pour l'excellence des résultats.</p>
-                        </div>
+            <span class="w-12 h-12 rounded-2xl bg-accent-new/15 text-accent-new flex items-center justify-center text-2xl"><i class="fas fa-sitemap"></i></span>
+            <div><h3 class="text-lg font-semibold">Systèmes & Réseaux</h3><p class="text-sm text-gray-400">Environnements Windows & Linux</p></div>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide">
+            <span class="pill px-3 py-1 rounded-full">VirtualBox</span><span class="pill px-3 py-1 rounded-full">ZABBIX</span><span class="pill px-3 py-1 rounded-full">GLPI</span><span class="pill px-3 py-1 rounded-full">CISCO</span><span class="pill px-3 py-1 rounded-full">openVPN</span>
+          </div>
+        </article>
+        <article class="glass rounded-3xl p-6 flex flex-col gap-5">
+          <div class="flex items-center gap-3">
+            <span class="w-12 h-12 rounded-2xl bg-accent-new/15 text-accent-new flex items-center justify-center text-2xl"><i class="fas fa-shield-alt"></i></span>
+            <div><h3 class="text-lg font-semibold">Cybersécurité</h3><p class="text-sm text-gray-400">Outils de cybersécurité</p></div>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide">
+            <span class="pill px-3 py-1 rounded-full">Crowdsec</span><span class="pill px-3 py-1 rounded-full">Snort</span><span class="pill px-3 py-1 rounded-full">Nmap</span><span class="pill px-3 py-1 rounded-full">Kali Linux</span>
+          </div>
+        </article>
+        <article class="glass rounded-3xl p-6 flex flex-col gap-5">
+          <div class="flex items-center gap-3">
+            <span class="w-12 h-12 rounded-2xl bg-primary-new/15 text-primary-new flex items-center justify-center text-2xl"><i class="fas fa-code"></i></span>
+            <div><h3 class="text-lg font-semibold">Développement</h3><p class="text-sm text-gray-400">Bash, Python, Powershell</p></div>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+           
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide">
+            <span class="pill px-3 py-1 rounded-full">Bash</span><span class="pill px-3 py-1 rounded-full">Python</span><span class="pill px-3 py-1 rounded-full">Powershell</span><span class="pill px-3 py-1 rounded-full">C #</span><span class="pill px-3 py-1 rounded-full">SQL</span>
+          </div>
+        </article>
+      </section>
 
-                        <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-accent-new transform hover:shadow-2xl">
-                            <h4 class="text-2xl font-bold text-text-dark flex items-center">
-                                CACES R485 - Catégorie 1 et 2
-                                <i class="fas fa-check-circle text-accent-new ml-3 text-2xl"></i>
-                            </h4>
-                            <p class="text-accent-new font-semibold mb-3">Certigo-Icofor Le Mans • Obtenu le 16/07/2024</p>
-                            <p class="text-gray-400">Certification d'aptitude à la conduite en sécurité pour les Chariots de manutention automoteurs gerbeurs à conducteur accompagnant.</p>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="animate-slide-up delay-100">
-                    <h2 class="text-3xl font-bold mb-10 text-primary-new flex items-center border-b border-gray-800 pb-3">
-                        <i class="fas fa-code text-accent-new mr-4 text-3xl"></i>
-                        Compétences Techniques
-                    </h2>
-                    <div class="space-y-8">
-                        <h3 class="text-xl font-bold text-primary-new border-b border-gray-700 pb-2 flex items-center">
-                            <i class="fas fa-server mr-2 text-accent-new"></i> BLOC 2 : Administration des systèmes et réseaux
-                        </h3>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
-                                <i class="fas fa-network-wired text-cyan-400 text-4xl mb-3"></i>
-                                <p class="font-bold text-text-dark text-sm">Conception d'Infrastructure Réseau</p>
-                            </div>
-                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
-                                <i class="fas fa-cogs text-yellow-300 text-4xl mb-3"></i>
-                                <p class="font-bold text-text-dark text-sm">Installation & Déploiement Réseau</p>
-                            </div>
-                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
-                                <i class="fas fa-tools text-orange-400 text-4xl mb-3"></i>
-                                <p class="font-bold text-text-dark text-sm">Exploitation, Dépannage & Supervision</p>
-                            </div>
-                        </div>
-
-                        <h3 class="text-xl font-bold text-primary-new border-b border-gray-700 pb-2 pt-6 flex items-center">
-                            <i class="fas fa-shield-alt mr-2 text-accent-new"></i> BLOC 3 : Cybersécurité
-                        </h3>
-                        <div class="grid grid-cols-3 gap-6">
-                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
-                                <i class="fas fa-lock text-red-500 text-4xl mb-3"></i>
-                                <p class="font-bold text-text-dark text-sm">Protection des Données Personnelles</p>
-                            </div>
-                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
-                                <i class="fas fa-user-shield text-green-400 text-4xl mb-3"></i>
-                                <p class="font-bold text-text-dark text-sm">Préservation de l'Identité Numérique</p>
-                            </div>
-                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
-                                <i class="fas fa-laptop-code text-blue-400 text-4xl mb-3"></i>
-                                <p class="font-bold text-text-dark text-sm">Sécurisation des Équipements & Usages</p>
-                            </div>
-                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new col-span-2">
-                                <i class="fas fa-chart-line text-purple-400 text-4xl mb-3"></i>
-                                <p class="font-bold text-text-dark text-sm">Garantie de Disponibilité, Intégrité, Confidentialité (DIC)</p>
-                            </div>
-                            <div class="card-hover card-dark p-6 rounded-xl text-center shadow-md border-b-4 border-primary-new/50 hover:border-primary-new">
-                                <i class="fas fa-file-code text-pink-400 text-4xl mb-3"></i>
-                                <p class="font-bold text-text-dark text-sm">Sécurité de Solution Applicative & Développement</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Parcours académique -->
+      <section>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-accent-new mb-2">Parcours</p>
+            <h2 class="text-3xl md:text-4xl font-bold">Mon parcours académique</h2>
+            <p class="text-gray-400 text-base md:text-lg max-w-xl">
+              Des fondamentaux réseau jusqu'aux architectures multi-sites, chaque diplôme consolide ma compréhension des couches systèmes & sécurité.
+            </p>
+          </div>
         </div>
-    </section>
 
-    <footer class="bg-[#0F0F0F] text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 pb-8 mb-8">
-                <div class="mb-6 md:mb-0">
-                    <a href="index.html" class="text-3xl font-extrabold text-gradient">Mon Portfolio</a>
-                    <p class="text-gray-400 mt-2 font-light"></p>
+        <div class="timeline relative mx-auto mt-12">
+          <div class="space-y-14">
+            <article class="timeline-step flex flex-col md:flex-row gap-8 md:gap-16">
+              <div class="md:w-1/2 md:text-right">
+                <p class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs uppercase font-bold bg-accent-new/15 text-accent-new">2024 – 2026</p>
+                <h3 class="text-2xl font-semibold mt-4">BTS SIO — Option SISR</h3>
+                <p class="text-gray-400 text-sm mt-1">Lycée Chevrollier, Angers</p>
+              </div>
+              <div class="md:w-1/2 glass rounded-3xl p-6 space-y-4">
+                <p class="text-sm text-gray-400 leading-relaxed">Administration avancée de serveurs, supervision globale et sécurisation de parcs. Travaux pratiques en VLAN, QoS, PRA et bastions.</p>
+                <ul class="text-sm text-gray-400 space-y-2">
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-accent-new mt-1"></i> Architecture Microsoft hybride (AD DS, DNS, DHCP, LDAP)</li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-accent-new mt-1"></i> Supervision (Zabbix)</li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-accent-new mt-1"></i> Sécurité réseau : segmentation (DMZ), IDS, Routage/filtrage</li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-accent-new mt-1"></i> Accès distants : VPN OpenVpn, IPSec</li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-accent-new mt-1"></i> Virtualisation (VMware, VirtualBox)</progress></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-step flex flex-col md:flex-row gap-8 md:gap-16">
+              <div class="md:w-1/2 md:order-2">
+                <p class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs uppercase font-bold bg-yellow-400/20 text-yellow-300">2021 – 2024</p>
+                <h3 class="text-2xl font-semibold mt-4">Bac Pro SN — Option RISC</h3>
+                <p class="text-gray-400 text-sm mt-1">Lycée Touchard Washington, Le Mans</p>
+              </div>
+              <div class="md:w-1/2 glass rounded-3xl p-6 space-y-4">
+                <p class="text-sm text-gray-400 leading-relaxed">Mention Très Bien. Découverte des infrastructures convergentes, VoIP, mise en place d'infrastructure réseau</p>
+                <ul class="text-sm text-gray-400 space-y-2">
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-yellow-300 mt-1"></i> Déploiement ToIP (Téléphonie IP, PABX)</li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-yellow-300 mt-1"></i> Mise en place d'un commutateur de Niveau 2 (Vlan, Inter-Vlan)</li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-yellow-300 mt-1"></i> Sécurisation Wi-Fi sur routeur Cisco (WPA2-Enterprise)</li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-yellow-300 mt-1"></i> Cisco Packet Tracer</li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-yellow-300 mt-1"></i> Installation de prises RJ45 et de leurs connecteurs</li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-yellow-300 mt-1"></i> Montage de baie informatique </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-step flex flex-col md:flex-row gap-8 md:gap-16">
+              <div class="md:w-1/2 md:text-right">
+                <p class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs uppercase font-bold bg-white/10 text-white">2017 – 2021</p>
+                <h3 class="text-2xl font-semibold mt-4">Brevet des collèges</h3>
+                <p class="text-gray-400 text-sm mt-1">Collège Frère André, Saint-Calais</p>
+              </div>
+              <div class="md:w-1/2 glass rounded-3xl p-6 space-y-4">
+                <p class="text-sm text-gray-400 leading-relaxed">Mention Assez Bien. Participation aux clubs robotique et programmation, premières maquettes réseaux et découverte de Linux.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide">
+                  <span class="pill px-3 py-1 rounded-full">Scratch</span><span class="pill px-3 py-1 rounded-full">Arduino</span>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110"><i class="fab fa-linkedin text-3xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110"><i class="fab fa-github text-3xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110"><i class="fab fa-twitter text-3xl"></i></a>
-                </div>
-            </div>
-            <div class="text-center text-gray-500 text-sm">
-                <p>&copy; 2025 Mon Portfolio. Tous droits réservés | Design par Julian Lory</p>
-            </div>
+              </div>
+            </article>
+          </div>
         </div>
-    </footer>
+      </section>
 
-    <script>
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -80px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.animate-slide-up, .animate-scale-up, .animate-fade-in').forEach(el => {
-            el.classList.add('transition-transform', 'duration-800', 'ease-out');
-            observer.observe(el);
-        });
-        document.querySelectorAll('.animate-slide-up').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(50px)'; });
-        document.querySelectorAll('.animate-scale-up').forEach(el => { el.style.opacity = '0'; el.style.transform = 'scale(0.8)'; });
-        document.querySelectorAll('.animate-fade-in').forEach(el => { el.style.opacity = '0'; });
-        const styleSheet = document.createElement("style");
-        styleSheet.type = "text/css";
-        styleSheet.innerText = `.is-visible { opacity: 1 !important; transform: translateY(0) scale(1) !important; }.delay-100 { transition-delay: 0.1s; }.delay-200 { transition-delay: 0.2s; }.delay-300 { transition-delay: 0.3s; }.duration-800 { transition-duration: 0.8s; }`;
-        document.head.appendChild(styleSheet);
-    </script>
+      <!-- === NOUVELLE SECTION EXPERTISES TECHNIQUES (la plus belle) === -->
+      <section class="relative py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-teal-600/10 to-cyan-600/20"></div>
+          <div class="absolute top-0 left-0 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl animate-pulse"></div>
+          <div class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500 rounded-full filter blur-3xl animate-pulse" style="animation-delay:4s"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+          <div class="text-center mb-20">
+            <p class="text-xs tracking-[0.5em] text-emerald-400 font-bold mb-4">EXPERTISES TECHNIQUES</p>
+            <h2 class="text-5xl md:text-7xl font-black leading-tight">
+              <span class="bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent animate-gradient-x">
+                BTS SIO SISR
+              </span>
+              <br>
+              <span class="text-2xl md:text-3xl text-gray-400 font-light tracking-wider">
+                Protocoles • Services • Outils • Sécurité
+              </span>
+            </h2>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+            <!-- 01 Systèmes & Réseaux -->
+            <div class="group relative">
+              <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl blur-lg opacity-60 group-hover:opacity-100 transition duration-1000"></div>
+              <div class="relative glass rounded-3xl border border-emerald-500/30 p-10 backdrop-blur-xl">
+                <div class="flex items-center gap-5 mb-6">
+                  <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-3xl font-black text-black shadow-2xl">01</div>
+                  <h3 class="text-3xl font-black text-emerald-300">Systèmes & Réseaux</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed space-y-3 text-lg">
+                  <span class="block">Windows Server • Linux (Debian, Ubuntu, Rocky)</span>
+                  <span class="block">AD DS, Azure AD, DNS, DHCP, GPO • Virtualisation (XCP-ng, Proxmox, VMware)</span>
+                  <span class="block">Routage & filtrage : pfSense, OPNsense, iptables/nftables</span>
+                  <span class="block">Supervision : Zabbix, Centreon, Grafana/Loki/Prometheus</span>
+                  <span class="block">Infrastructure Cisco : VLAN, VTP, EtherChannel, ACL, NAT/PAT</span>
+                  <span class="block">VPN : OpenVPN, WireGuard, IPsec • Wi-Fi Enterprise (WPA2/3-Enterprise + RADIUS)</span>
+                </p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <span class="chip-glow">pfSense</span><span class="chip-glow">Zabbix</span><span class="chip-glow">XCP-ng</span><span class="chip-glow">Cisco</span><span class="chip-glow">WireGuard</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 02 Cybersécurité -->
+            <div class="group relative">
+              <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-3xl blur-lg opacity-60 group-hover:opacity-100 transition duration-1000"></div>
+              <div class="relative glass rounded-3xl border border-pink-500/30 p-10 backdrop-blur-xl">
+                <div class="flex items-center gap-5 mb-6">
+                  <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center text-3xl font-black text-white shadow-2xl">02</div>
+                  <h3 class="text-3xl font-black text-pink-300">Cybersécurité</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed space-y-3 text-lg">
+                  <span class="block">Certification SecNum Académie (ANSSI)</span>
+                  <span class="block">Pentest & ethical hacking • Kali Linux, Metasploit</span>
+                  <span class="block">IPS : CrowdSec, Fail2Ban • IDS : Snort, Suricata</span>
+                  <span class="block">SIEM : Wazuh, Elastic Stack</span>
+                  <span class="block">Proxy : Squid, Traefik, Nginx Proxy Manager</span>
+                </p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <span class="chip-glow">Wazuh</span><span class="chip-glow">CrowdSec</span><span class="chip-glow">Suricata</span><span class="chip-glow">Kali</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 03 Scripting & Automatisation -->
+            <div class="group relative">
+              <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-3xl blur-lg opacity-60 group-hover:opacity-100 transition duration-1000"></div>
+              <div class="relative glass rounded-3xl border border-cyan-500/30 p-10 backdrop-blur-xl">
+                <div class="flex items-center gap-5 mb-6">
+                  <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-3xl font-black text-white shadow-2xl">03</div>
+                  <h3 class="text-3xl font-black text-cyan-300">Développement</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed space-y-3 text-lg">
+                  <span class="block">Bash / Shell • Python (automatisation)</span>
+                  <span class="block">PowerShell avancé + gestion Active Directory</span>
+                  <span class="block">Ansible (playbooks, inventaires)</span>
+                </p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <span class="chip-glow">Python</span><span class="chip-glow">PowerShell</span><span class="chip-glow">Ansible</span><span class="chip-glow">Bash</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 04 Gestion de projet -->
+            <div class="group relative">
+              <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-600 rounded-3xl blur-lg opacity-60 group-hover:opacity-100 transition duration-1000"></div>
+              <div class="relative glass rounded-3xl border border-orange-500/30 p-10 backdrop-blur-xl">
+                <div class="flex items-center gap-5 mb-6">
+                  <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center text-3xl font-black text-white shadow-2xl">04</div>
+                  <h3 class="text-3xl font-black text-orange-300">Gestion de projet</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed space-y-3 text-lg">
+                  <span class="block">Méthode AGILE • Scrum Master (projets étudiants)</span>
+                  <span class="block">Trello, Notion, Gantt • ITIL v4 foundations</span>
+                  <span class="block">ISO 27001/27005 • Gestion des risques</span>
+                </p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <span class="chip-glow">AGILE</span><span class="chip-glow">Scrum</span><span class="chip-glow">ITIL</span><span class="chip-glow">ISO 27001</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications & Soft Skills -->
+      <section class="grid lg:grid-cols-2 gap-10">
+        <article class="glass rounded-3xl p-6 space-y-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-semibold">Certifications </h3>
+            
+          </div>
+          <ul class="space-y-4 text-sm text-gray-400">
+            <li class="flex items-center justify-between bg-white/5 rounded-2xl p-4"><div><p class="font-semibold text-white">Cisco Networking Essentials</p><p class="text-xs text-gray-400">Architecture LAN & sécurité</p></div><span class="text-xs uppercase tracking-wide text-accent-new">2024</span></li>
+            <li class="flex items-center justify-between bg-white/5 rounded-2xl p-4"><div><p class="font-semibold text-white">SecNum Académie</p><p class="text-xs text-gray-400">Certification RGPD</p></div><span class="text-xs uppercase tracking-wide text-accent-new">2025</span></li>
+           
+          </ul>
+        </arton>
+        
+      </section>
+
+      <!-- CTA -->
+      
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#0F0F0F] text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 pb-8 mb-8">
+        <div class="mb-6 md:mb-0">
+          <a href="index.html" class="text-3xl font-extrabold text-gradient">Mon Portfolio</a>
+          <p class="text-gray-400 mt-2 font-light"></p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="https://www.linkedin.com/in/julian-lory-b0a224392/" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+            <i class="fab fa-linkedin text-3xl"></i>
+          </a>
+          <a href="https://github.com/skyerty/portfolio.github.io" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110">
+            <i class="fab fa-github text-3xl"></i>
+          </a>
+          
+        </div>
+      </div>
+      <div class="text-center text-gray-500 text-sm">
+        <p>&copy; 2025 Mon Portfolio. Tous droits réservés | Design par Julian Lory</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const icon = mobileMenuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        } else {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        }
+      });
+    }
+
+    // Theme Toggle - Système global synchronisé
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const themeToggleMobileMenu = document.getElementById('theme-toggle-mobile-menu');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeIconMobile = document.getElementById('theme-icon-mobile');
+    const themeIconMobileMenu = document.getElementById('theme-icon-mobile-menu');
+    const body = document.getElementById('body');
+    
+    // Fonction pour appliquer le thème
+    function applyTheme(theme) {
+      if (theme === 'light') {
+        body.classList.add('light-mode');
+        document.documentElement.classList.add('light-mode');
+      } else {
+        body.classList.remove('light-mode');
+        document.documentElement.classList.remove('light-mode');
+      }
+      
+      // Mettre à jour les icônes
+      if (themeIcon) {
+        if (theme === 'light') {
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
+        } else {
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+        }
+      }
+      
+      if (themeIconMobile) {
+        if (theme === 'light') {
+          themeIconMobile.classList.remove('fa-moon');
+          themeIconMobile.classList.add('fa-sun');
+        } else {
+          themeIconMobile.classList.remove('fa-sun');
+          themeIconMobile.classList.add('fa-moon');
+        }
+      }
+      
+      if (themeIconMobileMenu) {
+        if (theme === 'light') {
+          themeIconMobileMenu.classList.remove('fa-moon');
+          themeIconMobileMenu.classList.add('fa-sun');
+        } else {
+          themeIconMobileMenu.classList.remove('fa-sun');
+          themeIconMobileMenu.classList.add('fa-moon');
+        }
+      }
+    }
+    
+    // Charger le thème sauvegardé au démarrage
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    applyTheme(savedTheme);
+
+    // Fonction pour basculer le thème
+    function toggleTheme() {
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      // Sauvegarder la préférence
+      localStorage.setItem('theme', newTheme);
+      
+      // Appliquer le nouveau thème
+      applyTheme(newTheme);
+      
+      // Déclencher un événement storage pour synchroniser les autres onglets
+      window.dispatchEvent(new StorageEvent('storage', {
+        key: 'theme',
+        newValue: newTheme,
+        oldValue: currentTheme
+      }));
+    }
+
+    // Écouter les changements de thème depuis d'autres onglets
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'theme') {
+        applyTheme(e.newValue || 'dark');
+      }
+    });
+
+    // Attacher les événements
+    if (themeToggle) {
+      themeToggle.addEventListener('click', toggleTheme);
+    }
+    
+    if (themeToggleMobile) {
+      themeToggleMobile.addEventListener('click', toggleTheme);
+    }
+    
+    if (themeToggleMobileMenu) {
+      themeToggleMobileMenu.addEventListener('click', toggleTheme);
+    }
+  </script>
 </body>
 </html>

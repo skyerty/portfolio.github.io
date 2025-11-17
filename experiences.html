@@ -1,182 +1,448 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <base target="_self">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio - Expériences</title>
-    <meta name="description" content="Mes expériences professionnelles clés en développement.">
+    <meta name="description" content="Expériences professionnelles clés en support informatique, production et déploiement.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'primary-new': '#10B981', 
-                        'secondary-new': '#065F46', 
-                        'accent-new': '#34D399', 
-                        'bg-light': '#1A1A1A', 
-                        'text-dark': '#F9FAFB', 
+                        'primary': '#10B981',
+                        'secondary': '#065F46',
+                        'accent': '#34D399',
+                        'dark': '#050505',
+                        'card': '#0c0c0c',
                     },
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     animation: {
                         'fade-in': 'fadeIn 1s ease-out',
-                        'slide-up': 'slideUp 0.8s ease-out',
-                        'scale-up': 'scaleUp 0.8s ease-out'
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slideInLeft': 'slideInLeft 0.8s ease-out forwards',
+                        'slideInRight': 'slideInRight 0.8s ease-out forwards',
                     },
                     keyframes: {
                         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        slideUp: { '0%': { transform: 'translateY(50px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
-                        scaleUp: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } }
+                        float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+                        glow: { '0%': { boxShadow: '0 0 20px rgba(16,185,129,0.3)' }, '100%': { boxShadow: '0 0 40px rgba(16,185,129,0.6)' } },
+                        slideInLeft: { from: { opacity: 0, transform: 'translateX(-60px)' }, to: { opacity: 1, transform: 'translateX(0)' } },
+                        slideInRight: { from: { opacity: 0, transform: 'translateX(60px)' }, to: { opacity: 1, transform: 'translateX(0)' } },
                     }
                 }
             }
         }
     </script>
     <style>
-        .gradient-bg { background: linear-gradient(135deg, #1A1A1A 0%, #065F46 100%); }
-        .card-hover { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3); }
-        .text-gradient { background: linear-gradient(45deg, #34D399 0%, #10B981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .border-primary-new { border-color: #10B981; }
-        .border-secondary-new { border-color: #065F46; }
-        .border-accent-new { border-color: #34D399; }
-        .active-link { color: #10B981; font-weight: 700; }
-        .card-dark { background-color: #2C2C2C; border: 1px solid #3A3A3A; }
+        :root {
+            --bg-primary: #030303;
+            --bg-secondary: #0F0F0F;
+            --bg-card: rgba(10, 10, 10, 0.75);
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --border-color: rgba(255,255,255,0.08);
+        }
+        
+        body {
+            background: radial-gradient(circle at 10% 20%, rgba(16,185,129,0.15), transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(52,211,153,0.12), transparent 50%),
+                        var(--bg-primary);
+            min-height: 100vh;
+            transition: background 0.3s ease;
+        }
+        
+        body.light-mode {
+            --bg-primary: #F9FAFB;
+            --bg-secondary: #FFFFFF;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --border-color: rgba(0,0,0,0.1);
+            background: radial-gradient(circle at 10% 20%, rgba(16,185,129,0.08), transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(52,211,153,0.06), transparent 50%),
+                        var(--bg-primary);
+        }
+        
+        .glass {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .text-light-mode {
+            color: var(--text-primary);
+        }
+        
+        .text-secondary-light {
+            color: var(--text-secondary);
+        }
+        
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-bottom-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode #mobile-menu {
+            background: rgba(255, 255, 255, 0.98) !important;
+            border-top-color: rgba(16, 185, 129, 0.2) !important;
+        }
+        
+        body.light-mode footer {
+            background: #F3F4F6 !important;
+            color: #111827 !important;
+        }
+        
+        body.light-mode footer .border-gray-700 {
+            border-color: #D1D5DB !important;
+        }
+        
+        body.light-mode .text-gray-300 {
+            color: var(--text-primary) !important;
+        }
+        
+        body.light-mode .text-gray-400 {
+            color: var(--text-secondary) !important;
+        }
+        
+        body.light-mode .text-gray-500 {
+            color: #6B7280 !important;
+        }
+        
+        body.light-mode .text-white {
+            color: var(--text-primary) !important;
+        }
+        
+        body.light-mode .border-white\/30 {
+            border-color: rgba(0, 0, 0, 0.2) !important;
+        }
+        
+        body.light-mode .hover\:bg-white\/10:hover {
+            background-color: rgba(0, 0, 0, 0.05) !important;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-16px);
+            border-color: rgba(16,185,129,0.5) !important;
+            box-shadow: 0 32px 64px rgba(0,0,0,0.6), 0 0 40px rgba(16,185,129,0.3) !important;
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent, #10B981, transparent);
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #34D399, #10B981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .active-link {
+            color: #10B981;
+            font-weight: 700;
+        }
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16,185,129,0.2), transparent);
+            filter: blur(100px);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
     </style>
+    <script>
+        // Charger le thème IMMÉDIATEMENT avant le rendu pour éviter le flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+                document.body.classList.add('light-mode');
+            }
+        })();
+    </script>
 </head>
-<body class="min-h-screen font-sans text-text-dark" style="background-color: #1A1A1A; background-image: url(...);">
+<body class="text-gray-100" id="body">
 
-    <nav class="fixed w-full bg-[#0F0F0F]/95 backdrop-blur-md z-50 shadow-lg border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4">
+    <!-- NAVBAR -->
+    <nav class="fixed w-full bg-[#0F0F0F]/90 dark-mode-nav backdrop-blur-xl z-50 shadow-2xl border-b border-primary/20 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="text-3xl font-extrabold text-gradient animate-fade-in">Mon Portfolio</a>
-                <div class="hidden md:flex space-x-10 font-medium">
-                    <a href="index.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Accueil</a>
-                    <a href="parcours.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Parcours</a>
-                    <a href="projets.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Projets</a>
-                    <a href="experiences.html" class="active-link relative group"> Expériences
-                        <span class="absolute left-0 bottom-0 h-0.5 w-full bg-primary-new transition-all duration-300"></span>
-                    </a>
-                    <a href="contact.html" class="text-gray-400 hover:text-primary-new transition-all duration-300 relative group">Contact</a>
+                <a href="index.html" class="text-2xl font-extrabold text-gradient animate-fade-in hover:scale-105 transition-transform duration-300 flex items-center space-x-2">
+                    <div class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></div>
+                    <span>Mon Portfolio</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-3">
+                    <div class="flex items-center space-x-1 bg-[#1a1a1a]/50 rounded-full px-1.5 py-1 border border-primary/20">
+                        <a href="index.html" class="text-gray-300 hover:text-accent transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Accueil</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary to-accent rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="parcours.html" class="text-gray-300 hover:text-accent transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">À propos de moi</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary to-accent rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="projets.html" class="text-gray-300 hover:text-accent transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Projets</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary to-accent rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="experiences.html" class="active-link transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-semibold">
+                            <span class="relative z-10 text-primary">Expériences</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full opacity-100"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-10 bg-gradient-to-r from-primary to-accent rounded-full"></span>
+                        </a>
+                        <a href="explorationtech.html" class="text-gray-300 hover:text-accent transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Veille Tech</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary to-accent rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                        <a href="contact.html" class="text-gray-300 hover:text-accent transition-all duration-300 relative group px-4 py-1.5 rounded-full text-sm font-medium">
+                            <span class="relative z-10">Contact</span>
+                            <span class="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary to-accent rounded-full group-hover:w-10 transition-all duration-300"></span>
+                        </a>
+                    </div>
+                    <button id="theme-toggle" class="p-2 rounded-full bg-[#1a1a1a]/50 border border-primary/20 hover:bg-primary/10 transition-all duration-300 text-gray-300 hover:text-accent">
+                        <i class="fas fa-moon text-lg" id="theme-icon"></i>
+                    </button>
                 </div>
-                <div class="md:hidden"><button class="text-gray-400 hover:text-primary-new"><i class="fas fa-bars text-xl"></i></button></div>
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg hover:bg-primary/10 transition-colors duration-300 text-gray-300 hover:text-accent">
+                        <i class="fas fa-moon text-xl" id="theme-icon-mobile"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-accent transition-colors duration-300 p-2 rounded-lg hover:bg-primary/10">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0F0F0F]/98 backdrop-blur-xl border-t border-primary/20">
+            <div class="container mx-auto px-6 py-4 space-y-2">
+                <a href="index.html" class="block text-gray-300 hover:text-accent hover:bg-primary/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-home mr-3 text-accent text-base"></i>Accueil
+                </a>
+                <a href="parcours.html" class="block text-gray-300 hover:text-accent hover:bg-primary/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-graduation-cap mr-3 text-accent text-base"></i>Parcours
+                </a>
+                <a href="projets.html" class="block text-gray-300 hover:text-accent hover:bg-primary/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                    <i class="fas fa-briefcase mr-3 text-accent text-base"></i>Projets
+                </a>
+                        <a href="experiences.html" class="block text-accent bg-primary/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                            <i class="fas fa-chart-line mr-3 text-accent text-base"></i>Expériences
+                        </a>
+                        <a href="explorationtech.html" class="block text-gray-300 hover:text-accent hover:bg-primary/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                            <i class="fas fa-search mr-3 text-accent text-base"></i>Veille Tech
+                        </a>
+                        <a href="contact.html" class="block text-gray-300 hover:text-accent hover:bg-primary/10 px-4 py-3 rounded-lg transition-all duration-300 font-medium">
+                            <i class="fas fa-envelope mr-3 text-accent text-base"></i>Contact
+                        </a>
             </div>
         </div>
     </nav>
-    
-    <section id="experiences" class="py-24">
-        <div class="container mx-auto px-6">
-            <h1 class="text-5xl font-extrabold text-center mb-16 text-text-dark pt-10 animate-slide-up">
-                <span class="text-gradient">Expériences Professionnelles</span>
-            </h1>
+
+    <!-- HERO -->
+    <section class="pt-32 pb-20 relative overflow-hidden">
+        <div class="blob top-20 left-10 animate-pulse"></div>
+        <div class="blob bottom-40 right-20 animate-pulse delay-1000"></div>
+        <div class="container mx-auto px-6 max-w-7xl text-center relative z-10">
             
-            <div class="max-w-4xl mx-auto">
-                <div class="space-y-12">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-gradient mb-8 leading-tight">
+                Mes expériences<br>professionnelles
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                Informatique · Production industrielle 
+            </p>
+            <div class="grid md:grid-cols-3 gap-6 mt-16 max-w-5xl mx-auto">
+                <!-- Bloc Missions -->
+                <div class="group relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-3xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                    <div class="relative glass rounded-3xl p-8 border border-primary/30 hover:border-primary/60 transition-all duration-300 card-hover">
+                        <div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30">
+                            <i class="fas fa-briefcase text-2xl text-primary"></i>
+                        </div>
+                        <p class="text-gray-400 text-xs uppercase tracking-[0.3em] text-center mb-3">Missions</p>
+                        <p class="text-6xl font-black text-white text-center leading-none mb-2">6</p>
+                        <p class="text-gray-500 text-xs text-center uppercase tracking-wider">Stages & Contrats</p>
+                    </div>
+                </div>
 
-                    <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-accent-new animate-slide-up">
-                        <div class="flex justify-between items-start mb-4">
-                            <h2 class="text-2xl font-bold text-text-dark">Opérateur de ligne</h2>
-                            <span class="bg-primary-new text-[#1A1A1A] px-4 py-1 rounded-full text-sm font-semibold shadow-md">Juin à Août 2025</span>
+                <!-- Bloc Durée cumulée -->
+                <div class="group relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accent to-primary rounded-3xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                    <div class="relative glass rounded-3xl p-8 border border-accent/30 hover:border-accent/60 transition-all duration-300 card-hover">
+                        <div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-accent/20 to-primary/20 border border-accent/30">
+                            <i class="fas fa-calendar-alt text-2xl text-accent"></i>
                         </div>
-                        <p class="text-accent-new font-semibold mb-4">Niedax • Saint-Calais</p>
-                        <ul class="text-gray-400 space-y-3 list-disc pl-5">
-                            <li class="pl-2">
-                                Au sein de l’entreprise Niedax France, spécialisée dans la fabrication et la transformation de produits métalliques destinés aux installations électriques, j’occupe le poste d’Opérateur de ligne.
-                                Mon rôle consiste à assurer le bon fonctionnement des machines de production, à surveiller les différentes étapes de fabrication, et à contrôler la qualité des pièces métalliques produites.
-                                Je participe également à la maintenance de premier niveau, au réglage des machines et à l’optimisation de la production pour garantir un rendement optimal tout en respectant les normes de sécurité et de qualité.
-                            </li>
-                            <li class="pl-2">
-                                Période : du 30/06/2025 au 29/08/2025
-                            </li>
-                        </ul>
+                        <p class="text-gray-400 text-xs uppercase tracking-[0.3em] text-center mb-3">Durée cumulée</p>
+                        <p class="text-5xl font-black text-white text-center leading-none mb-2">18</p>
+                        <p class="text-gray-500 text-xs text-center uppercase tracking-wider">Mois d'expérience</p>
                     </div>
-                    
-                    <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-secondary-new animate-slide-up delay-100">
-                        <div class="flex justify-between items-start mb-4">
-                            <h2 class="text-2xl font-bold text-text-dark">Stage professionnel</h2>
-                            <span class="bg-secondary-new text-white px-4 py-1 rounded-full text-sm font-semibold shadow-md">Mai à Juin 2025</span>
-                        </div>
-                        <p class="text-accent-new font-semibold mb-4">Foussier Quincaillerie • Allonnes</p>
-                        <ul class="text-gray-400 space-y-3 list-disc pl-5">
-                            <li class="pl-2">
-                                J’ai effectué mon stage au sein du service informatique de l’entreprise Foussier, spécialisée dans la distribution de fournitures techniques pour le bâtiment et l’industrie. Durant ces six semaines, j’ai participé à la préparation, l’installation et la maintenance de matériels informatiques (ordinateurs, téléphones, imprimantes) destinés aux agences et aux employés.
-                                J’ai également appris à utiliser plusieurs outils professionnels tels que GLPI pour la gestion des demandes, Manage Engine (MEDC) pour la configuration des téléphones, et PowerShell pour l’identification des postes.
-                                Ce stage m’a permis de développer mes compétences techniques et organisationnelles, tout en découvrant le fonctionnement d’un service informatique dans une grande entreprise.
-                            </li>
-                            <li class="pl-2">
-                                Période : du 12/05/2025 au 20/06/2025
-                            </li>
-                        </ul>
-                    </div>
+                </div>
 
-                    <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-accent-new animate-slide-up delay-200">
-                        <div class="flex justify-between items-start mb-4">
-                            <h2 class="text-2xl font-bold text-text-dark">Opérateur de ligne</h2>
-                            <span class="bg-primary-new text-[#1A1A1A] px-4 py-1 rounded-full text-sm font-semibold shadow-md">Juin à Août 2024</span>
+                <!-- Bloc Domaines -->
+                <div class="group relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-3xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                    <div class="relative glass rounded-3xl p-8 border border-primary/30 hover:border-primary/60 transition-all duration-300 card-hover">
+                        <div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30">
+                            <i class="fas fa-layer-group text-2xl text-primary"></i>
                         </div>
-                        <p class="text-accent-new font-semibold mb-4">Niedax • Saint-Calais</p>
-                        <ul class="text-gray-400 space-y-3 list-disc pl-5">
-                            <li class="pl-2">
-                                Au sein de l’entreprise Niedax France, spécialisée dans la fabrication et la transformation de produits métalliques destinés aux installations électriques, j’occupe le poste d’Opérateur de ligne.
-                                Mon rôle consiste à assurer le bon fonctionnement des machines de production, à surveiller les différentes étapes de fabrication, et à contrôler la qualité des pièces métalliques produites.
-                                Je participe également à la maintenance de premier niveau, au réglage des machines et à l’optimisation de la production pour garantir un rendement optimal tout en respectant les normes de sécurité et de qualité.
-                            </li>
-                            </li>
-                            <li class="pl-2">
-                                Période : du 24/06/2024 au 24/08/2024
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-secondary-new animate-slide-up delay-300">
-                        <div class="flex justify-between items-start mb-4">
-                            <h2 class="text-2xl font-bold text-text-dark">Stage professionnel</h2>
-                            <span class="bg-secondary-new text-white px-4 py-1 rounded-full text-sm font-semibold shadow-md">Janvier à Février 2024</span>
+                        <p class="text-gray-400 text-xs uppercase tracking-[0.3em] text-center mb-3">Domaines</p>
+                        <div class="space-y-2">
+                            <p class="text-2xl font-black text-white text-center leading-tight">Informatique</p>
+                            <p class="text-2xl font-black text-accent text-center leading-tight">+ Métallurgie</p>
                         </div>
-                        <p class="text-accent-new font-semibold mb-4">Spie Informatique • Arnage</p>
-                        <ul class="text-gray-400 space-y-3 list-disc pl-5">
-                            <li class="pl-2">
-                                Reconditionnement de matériels informatiques et prestation technique pour le groupe Covéa (MMA, MAAF, GMF).
-                            </li>
-                            <li class="pl-2">
-                                Période : du 29/01/2024 au 24/02/2024
-                            </li>
-                        </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-accent-new animate-slide-up delay-400">
-                        <div class="flex justify-between items-start mb-4">
-                            <h2 class="text-2xl font-bold text-text-dark">Stage professionnel</h2>
-                            <span class="bg-primary-new text-[#1A1A1A] px-4 py-1 rounded-full text-sm font-semibold shadow-md">Septembre à Octobre 2023</span>
+    <!-- TIMELINE COMPLÈTE -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gradient">Parcours chronologique</h2>
+                <p class="text-gray-400 mt-4">De la plus récente à la plus ancienne</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full timeline-line opacity-40"></div>
+
+                <div class="space-y-20">
+
+                    <!-- Juin → Août 2025 -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse">
+                        <div class="w-full md:w-1/2 px-8">
+                            <div class="glass rounded-3xl p-8 card-hover border border-primary/30">
+                                <div class="flex items-center gap-5 mb-5">
+                                    <img src="./image/Logo Niedax.png" alt="Niedax" class="w-16 h-16 rounded-2xl border border-white/10">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white">Opérateur de ligne</h3>
+                                        <p class="text-accent font-medium">Niedax • Saint-Calais</p>
+                                        <p class="text-sm text-primary">Juin → Août 2025</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-300 leading-relaxed">Surveillance des machines de production, contrôle qualité des pièces métalliques, maintenance de premier niveau et respect strict des normes sécurité.</p>
+                            </div>
                         </div>
-                        <p class="text-accent-new font-semibold mb-4">Point Service Mobiles • Le Mans</p>
-                        <ul class="text-gray-400 space-y-3 list-disc pl-5">
-                            <li class="pl-2">
-                                Réparation téléphonique 
-                            </li>
-                            <li class="pl-2">
-                                Période : du 25/09/2023 au 21/10/2023
-                            </li>
-                        </ul>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-primary rounded-full border-4 border-dark flex items-center justify-center shadow-2xl z-10 animate-glow">
+                            <span class="text-black font-bold">25</span>
+                        </div>
+                        <div class="w-full md:w-1/2"></div>
                     </div>
 
-                    <div class="card-hover card-dark p-8 rounded-2xl shadow-xl border-l-4 border-secondary-new animate-slide-up delay-500">
-                        <div class="flex justify-between items-start mb-4">
-                            <h2 class="text-2xl font-bold text-text-dark">Stage professionnel</h2>
-                            <span class="bg-secondary-new text-white px-4 py-1 rounded-full text-sm font-semibold shadow-md">Mars à Avril 2023</span>
+                    <!-- Mai → Juin 2025 -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse">
+                        <div class="w-full md:w-1/2 px-8 order-2 md:order-1">
+                            <div class="glass rounded-3xl p-8 card-hover border border-primary/30">
+                        <div class="flex items-center gap-6 mb-5">
+                            <div class="rounded-2xl border border-white/10 bg-white/5 p-2 flex-shrink-0">
+                                <img src="./image/Logo Foussier .png"
+                                     alt="Foussier Quincaillerie"
+                                     class="w-28 h-20 object-contain">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-2xl font-bold text-white">Stage Support IT National</h3>
+                                <p class="text-accent font-medium">Foussier Quincaillerie • Allonnes</p>
+                                <p class="text-sm text-primary">Mai → Juin 2025</p>
+                            </div>
                         </div>
-                        <p class="text-accent-new font-semibold mb-4">Computech Universe • Bouloire</p>
-                        <ul class="text-gray-400 space-y-3 list-disc pl-5">
-                            <li class="pl-2">
-                               Intervention en prestation externe pour la réparation et la maintenance d’ordinateurs.
-                            </li>
-                            <li class="pl-2">
-                                Période : du 20/03/2023 au 15/04/2023
-                            </li>
-                        </ul>
+                                <p class="text-gray-300 leading-relaxed">Préparation, installation et maintenance des postes pour 80 agences. GLPI, MEDC, scripts PowerShell, procédures de déploiement.</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-primary rounded-full border-4 border-dark shadow-2xl z-10"></div>
+                        <div class="w-full md:w-1/2 order-1 md:order-2"></div>
+                    </div>
+
+                    <!-- Juin → Août 2024 -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse">
+                        <div class="w-full md:w-1/2 px-8">
+                            <div class="glass rounded-3xl p-8 card-hover border border-primary/30">
+                                <div class="flex items-center gap-5 mb-5">
+                                    <img src="./image/Logo Niedax.png" alt="Niedax" class="w-16 h-16 rounded-2xl border border-white/10">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white">Opérateur de ligne (CDD saisonnier)</h3>
+                                        <p class="text-accent font-medium">Niedax • Saint-Calais</p>
+                                        <p class="text-sm text-primary">Juin → Août 2024</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-300 leading-relaxed">Contrôle des étapes de fabrication, ajustements machines, optimisation des flux et respect des normes qualité/sécurité.</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-primary rounded-full border-4 border-dark shadow-2xl z-10"></div>
+                        <div class="w-full md:w-1/2"></div>
+                    </div>
+
+                    <!-- Janv → Fév 2024 -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse">
+                        <div class="w-full md:w-1/2 px-8 order-2 md:order-1">
+                            <div class="glass rounded-3xl p-8 card-hover border border-primary/30">
+                        <div class="flex items-center gap-6 mb-5">
+                            <div class="rounded-2xl border border-white/10 bg-white/5 p-3 flex-shrink-0">
+                                <img src="./image/Logo Spie.png"
+                                     alt="Spie Informatique"
+                                     class="w-28 h-20 object-contain">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-2xl font-bold text-white">Stage professionnel</h3>
+                                <p class="text-accent font-medium">Spie Informatique • Arnage</p>
+                                <p class="text-sm text-primary">Janvier → Février 2024</p>
+                            </div>
+                        </div>
+                                <p class="text-gray-300 leading-relaxed">Reconditionnement matériel et prestations techniques pour Covéa (MMA, MAAF, GMF).</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-primary rounded-full border-4 border-dark shadow-2xl z-10"></div>
+                        <div class="w-full md:w-1/2 order-1 md:order-2"></div>
+                    </div>
+
+                    <!-- Sept → Oct 2023 -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse">
+                        <div class="w-full md:w-1/2 px-8">
+                            <div class="glass rounded-3xl p-8 card-hover border border-primary/30">
+                                <div class="flex items-center gap-5 mb-5">
+                                    <img src="./image/Logo psm.png" alt="PSM" class="w-16 h-16 rounded-2xl border border-white/10">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white">Stage réparation téléphonique</h3>
+                                        <p class="text-accent font-medium">Point Service Mobiles • Le Mans</p>
+                                        <p class="text-sm text-primary">Septembre → Octobre 2023</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-300 leading-relaxed">Diagnostic et réparation smartphones : cartes mères, écrans, connectiques, batteries.</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-primary rounded-full border-4 border-dark shadow-2xl z-10"></div>
+                        <div class="w-full md:w-1/2"></div>
+                    </div>
+
+                    <!-- Mars → Avril 2023 -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse">
+                        <div class="w-full md:w-1/2 px-8 order-2 md:order-1">
+                            <div class="glass rounded-3xl p-8 card-hover border border-primary/30">
+                                <div class="flex items-center gap-5 mb-5">
+                                    <img src="./image/Logo Computech .jpg" alt="Computech" class="w-16 h-16 rounded-2xl border border-white/10">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white">Stage prestation IT</h3>
+                                        <p class="text-accent font-medium">Computech Universe • Bouloire</p>
+                                        <p class="text-sm text-primary">Mars → Avril 2023</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-300 leading-relaxed">Maintenance et réparation d’ordinateurs directement chez les clients (particuliers et professionnels).</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-primary rounded-full border-4 border-dark shadow-2xl z-10"></div>
+                        <div class="w-full md:w-1/2 order-1 md:order-2"></div>
                     </div>
 
                 </div>
@@ -184,44 +450,137 @@
         </div>
     </section>
 
-    <footer class="bg-[#0F0F0F] text-white py-12">
+    <!-- CTA -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <div class="glass rounded-3xl p-12 md:p-16 border border-primary/20">
+                <h3 class="text-4xl md:text-5xl font-extrabold text-gradient mb-6">On travaille ensemble ?</h3>
+                <p class="text-xl text-gray-300 mb-10">Alternance </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="contact.html" class="px-10 py-4 rounded-full bg-gradient-to-r from-primary to-accent text-black font-bold text-lg hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-105 transition">
+                        Me contacter
+                    </a>
+                    <a href="projets.html" class="px-10 py-4 rounded-full border-2 border-white/30 text-white font-bold text-lg hover:bg-white/10 transition">
+                        Voir mes projets
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (identique) -->
+    <footer class="bg-[#0F0F0F] text-white py-12 transition-all duration-300" id="footer">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 pb-8 mb-8">
                 <div class="mb-6 md:mb-0">
                     <a href="index.html" class="text-3xl font-extrabold text-gradient">Mon Portfolio</a>
-                    <p class="text-gray-400 mt-2 font-light">
-                    </p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110"><i class="fab fa-linkedin text-3xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110"><i class="fab fa-github text-3xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-primary-new transition-colors duration-300 transform hover:scale-110"><i class="fab fa-twitter text-3xl"></i></a>
+                    <a href="https://www.linkedin.com/in/julian-lory-b0a224392/" class="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:scale-110">
+                        <i class="fab fa-linkedin text-3xl"></i>
+                    </a>
+                    <a href="https://github.com/skyerty/portfolio.github.io" class="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:scale-110">
+                        <i class="fab fa-github text-3xl"></i>
+                    </a>
+                    
                 </div>
             </div>
             <div class="text-center text-gray-500 text-sm">
-                <p>&copy; 2025 Mon Portfolio. Tous droits réservés | Design par Julian Lory </p>
+                <p>© 2025 Mon Portfolio. Tous droits réservés | Design par Julian Lory</p>
             </div>
         </div>
     </footer>
 
     <script>
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -80px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
+        // Menu mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
             });
-        }, observerOptions);
-        document.querySelectorAll('.animate-slide-up, .animate-scale-up, .animate-fade-in').forEach(el => {
-            el.classList.add('transition-transform', 'duration-800', 'ease-out');
-            observer.observe(el);
+        }
+
+        // Theme Toggle - Système global synchronisé
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const body = document.getElementById('body');
+        
+        // Fonction pour appliquer le thème
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                document.documentElement.classList.add('light-mode');
+            } else {
+                body.classList.remove('light-mode');
+                document.documentElement.classList.remove('light-mode');
+            }
+            
+            // Mettre à jour les icônes
+            if (themeIcon) {
+                if (theme === 'light') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+            
+            if (themeIconMobile) {
+                if (theme === 'light') {
+                    themeIconMobile.classList.remove('fa-moon');
+                    themeIconMobile.classList.add('fa-sun');
+                } else {
+                    themeIconMobile.classList.remove('fa-sun');
+                    themeIconMobile.classList.add('fa-moon');
+                }
+            }
+        }
+        
+        // Charger le thème sauvegardé au démarrage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+        // Fonction pour basculer le thème
+        function toggleTheme() {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Sauvegarder la préférence
+            localStorage.setItem('theme', newTheme);
+            
+            // Appliquer le nouveau thème
+            applyTheme(newTheme);
+            
+            // Déclencher un événement storage pour synchroniser les autres onglets
+            window.dispatchEvent(new StorageEvent('storage', {
+                key: 'theme',
+                newValue: newTheme,
+                oldValue: currentTheme
+            }));
+        }
+
+        // Écouter les changements de thème depuis d'autres onglets
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'theme') {
+                applyTheme(e.newValue || 'dark');
+            }
         });
-        document.querySelectorAll('.animate-slide-up').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(50px)'; });
-        document.querySelectorAll('.animate-scale-up').forEach(el => { el.style.opacity = '0'; el.style.transform = 'scale(0.8)'; });
-        document.querySelectorAll('.animate-fade-in').forEach(el => { el.style.opacity = '0'; });
-        const styleSheet = document.createElement("style");
-        styleSheet.type = "text/css";
-        styleSheet.innerText = `.is-visible { opacity: 1 !important; transform: translateY(0) scale(1) !important; }.delay-100 { transition-delay: 0.1s; }.delay-200 { transition-delay: 0.2s; }.delay-300 { transition-delay: 0.3s; }.delay-400 { transition-delay: 0.4s; }.delay-500 { transition-delay: 0.5s; }.duration-800 { transition-duration: 0.8s; }`;
-        document.head.appendChild(styleSheet);
+
+        // Attacher les événements
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
+        }
     </script>
 </body>
 </html>
